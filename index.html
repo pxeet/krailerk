@@ -40,10 +40,9 @@
 </head>
 <body>
   <h1>รายงานสรุปการศึกษาความเป็นไปได้</h1>
-  <form>
+  <form action="https://script.google.com/macros/s/AKfycbzjaflZemSpNyf_LDPYeFghkW1JEFuDmaWmkavaN5mLRwA6W3e0rPAVprXHsAD2TNEiQA/exec" method="post">
     <label>เสนอ บริษัท</label>
     <input type="text" name="proposed_company" required>
-
     <label>ระยะเวลา:เริ่มเรียน</label>
     <input type="date" name="start_time" required>
 
@@ -146,158 +145,156 @@
         <label for="companyEmail">25. E-mail</label>
         <input type="email" id="companyEmail" name="companyEmail" required>
       </div>
-	<h1>ชื่อหัวฟอร์มของเรา</h1>
 
-  <h2>Company Profile ข้อมูลเบื้องต้นของบริษัท</h2>
+        <label>26. กรรมการผู้จัดการ (ชื่อ-สกุล)
+     <input type="text" required>
+        </label>
 
-  <label>26. กรรมการผู้จัดการ (ชื่อ-สกุล)
-    <input type="text" required>
-  </label>
+        <label>27. เบอร์มือถือ กรรมการผู้จัดการ
+            <input type="text" required>
+        </label>
 
-  <label>27. เบอร์มือถือ กรรมการผู้จัดการ
-    <input type="text" required>
-  </label>
+        <label>28. E-mail กรรมการผู้จัดการ
+            <input type="email" required>
+        </label>
 
-  <label>28. E-mail กรรมการผู้จัดการ
-    <input type="email" required>
-  </label>
+        <label>29. ผู้ประสานงานหลัก (ชื่อ-สกุล)
+            <input type="text" required>
+        </label>
 
-  <label>29. ผู้ประสานงานหลัก (ชื่อ-สกุล)
-    <input type="text" required>
-  </label>
+        <label>30. เบอร์มือถือ ผู้ประสานงานหลัก
+            <input type="text" required>
+        </label>
 
-  <label>30. เบอร์มือถือ ผู้ประสานงานหลัก
-    <input type="text" required>
-  </label>
+        <label>31. E-mail ผู้ประสานงานหลัก
+            <input type="email" required>
+        </label>
 
-  <label>31. E-mail ผู้ประสานงานหลัก
-    <input type="email" required>
-  </label>
+        <h2>สัดส่วนผู้ถือหุ้น</h2>
+        <label>32. ไทย (%)
+            <input type="number" min="0" max="100">
+        </label>
 
-  <h2>สัดส่วนผู้ถือหุ้น</h2>
-  <label>32. ไทย (%)
-    <input type="number" min="0" max="100">
-  </label>
+        <label>33. ต่างชาติ (%)
+            <input type="number" min="0" max="100">
+        </label>
 
-  <label>33. ต่างชาติ (%)
-    <input type="number" min="0" max="100">
-  </label>
+        <h2>ประเภทธุรกิจ</h2>
+        <label>34. ประเภทธุรกิจ
+            <select>
+            <option>การผลิต</option>
+            <option>บริการ</option>
+            <option>การเกษตร</option>
+            </select>
+        </label>
 
-  <h2>ประเภทธุรกิจ</h2>
-  <label>34. ประเภทธุรกิจ
-    <select>
-      <option>การผลิต</option>
-      <option>บริการ</option>
-      <option>การเกษตร</option>
-    </select>
-  </label>
+        <label>35. ก่อตั้งเมื่อ พ.ศ
+            <input type="number">
+        </label>
 
-  <label>35. ก่อตั้งเมื่อ พ.ศ
-    <input type="number">
-  </label>
+        <label>36. ทุนจดทะเบียน(บาท)
+            <input type="number">
+        </label>
 
-  <label>36. ทุนจดทะเบียน(บาท)
-    <input type="number">
-  </label>
+        <label>37. กิจการอยู่ในอุตสาหกรรม
+            <input type="text">
+        </label>
 
-  <label>37. กิจการอยู่ในอุตสาหกรรม
-    <input type="text">
-  </label>
+        <label>38. พื้นที่โรงงาน (ไร่)
+            <input type="text">
+        </label>
 
-  <label>38. พื้นที่โรงงาน (ไร่)
-    <input type="text">
-  </label>
+        <label>39. รูปแบบกระบวนการผลิต (เลือกได้มากกว่า 1)</label>
+        <div class="multi-select">
+            <label><input type="checkbox"> Made to order</label>
+            <label><input type="checkbox"> Made to stock</label>
+            <label><input type="checkbox"> Assembly to order</label>
+            <label><input type="checkbox"> Engineering to order</label>
+        </div>
 
-  <label>39. รูปแบบกระบวนการผลิต (เลือกได้มากกว่า 1)</label>
-  <div class="multi-select">
-    <label><input type="checkbox"> Made to order</label>
-    <label><input type="checkbox"> Made to stock</label>
-    <label><input type="checkbox"> Assembly to order</label>
-    <label><input type="checkbox"> Engineering to order</label>
-  </div>
+        
+        <label>40. อื่นๆ โปรดระบุ
+            <input type="text">
+        </label>
 
-  <label>40. อื่นๆ โปรดระบุ
-    <input type="text">
-  </label>
+        <label>41. ลักษณะผลิตภัณฑ์ (เลือกได้มากกว่า 1)</label>
+        <div class="multi-select">
+            <label><input type="checkbox"> ตราสินค้าของตนเอง</label>
+            <label><input type="checkbox"> Made to stock</label>
+            <label><input type="checkbox"> OEM รับจ้างผลิตภัณฑ์</label>
+            <label><input type="checkbox"> ODM รับออกแบบผลิตภัณฑ์</label>
+        </div>
 
-  <label>41. ลักษณะผลิตภัณฑ์ (เลือกได้มากกว่า 1)</label>
-  <div class="multi-select">
-    <label><input type="checkbox"> ตราสินค้าของตนเอง</label>
-    <label><input type="checkbox"> Made to stock</label>
-    <label><input type="checkbox"> OEM รับจ้างผลิตภัณฑ์</label>
-    <label><input type="checkbox"> ODM รับออกแบบผลิตภัณฑ์</label>
-  </div>
+        <label>42. อื่นๆ โปรดระบุ 1
+            <input type="text">
+        </label>
 
-  <label>42. อื่นๆ โปรดระบุ 1
-    <input type="text">
-  </label>
+        <label>43. วัตถุดิบหลัก
+            <input type="text">
+        </label>
 
-  <label>43. วัตถุดิบหลัก
-    <input type="text">
-  </label>
+        <h2>แหล่งที่มาของวัตถุดิบ</h2>
+        <label>44. ในประเทศ (%)
+            <input type="text">
+        </label>
+        <label>45. ต่างประเทศ (%)
+            <input type="text">
+        </label>
+        <legend>ลูกค้าปัจจุบัน</legend>
+            <label for="domestic-market">46. ตลาดในประเทศ (%)</label>
+            <input type="text" id="domestic-market">
 
-  <h2>แหล่งที่มาของวัตถุดิบ</h2>
-  <label>44. ในประเทศ (%)
-    <input type="text">
-  </label>
-  <label>45. ต่างประเทศ (%)
-    <input type="text">
-  </label>
- <legend>ลูกค้าปัจจุบัน</legend>
-      <label for="domestic-market">46. ตลาดในประเทศ (%)</label>
-      <input type="text" id="domestic-market">
+            <label for="foreign-market">47. ตลาดต่างประเทศ (%)</label>
+            <input type="text" id="foreign-market">
 
-      <label for="foreign-market">47. ตลาดต่างประเทศ (%)</label>
-      <input type="text" id="foreign-market">
+            <label for="work-days">48. จำนวนวันทำงานต่อสัปดาห์</label>
+            <input type="text" id="work-days">
 
-      <label for="work-days">48. จำนวนวันทำงานต่อสัปดาห์</label>
-      <input type="text" id="work-days">
+            <label for="work-hours">49. ชั่วโมงการทำงานต่อปี</label>
+            <input type="text" id="work-hours">
 
-      <label for="work-hours">49. ชั่วโมงการทำงานต่อปี</label>
-      <input type="text" id="work-hours">
+            <label for="quality-system">50. ระบบคุณภาพ (ISO, IATF)</label>
+            <input type="text" id="quality-system">
+            </fieldset>
 
-      <label for="quality-system">50. ระบบคุณภาพ (ISO, IATF)</label>
-      <input type="text" id="quality-system">
-    </fieldset>
+            <fieldset>
+            <legend>Interview and Meeting ข้อมูลจากการสัมภาษณ์และสอบถาม</legend>
+            <label for="interview-name">51. ชื่อ-นามสกุล</label>
+            <input type="text" id="interview-name">
 
-    <fieldset>
-      <legend>Interview and Meeting ข้อมูลจากการสัมภาษณ์และสอบถาม</legend>
-      <label for="interview-name">51. ชื่อ-นามสกุล</label>
-      <input type="text" id="interview-name">
+            <label for="interview-position">52. ตำแหน่ง (เป็นผู้มีอำนาจการตัดสินใจ)</label>
+            <input type="text" id="interview-position">
+            </fieldset>
 
-      <label for="interview-position">52. ตำแหน่ง (เป็นผู้มีอำนาจการตัดสินใจ)</label>
-      <input type="text" id="interview-position">
-    </fieldset>
+            <fieldset>
+            <legend>มุมมองของธุรกิจ</legend>
+            <label for="present">53. ปัจจุบัน</label>
+            <input type="text" id="present">
+            </fieldset>
 
-    <fieldset>
-      <legend>มุมมองของธุรกิจ</legend>
-      <label for="present">53. ปัจจุบัน</label>
-      <input type="text" id="present">
-    </fieldset>
+            <fieldset>
+            <legend>อนาคต</legend>
+            <label for="short-term">54. ระยะสั้น</label>
+            <input type="text" id="short-term">
 
-    <fieldset>
-      <legend>อนาคต</legend>
-      <label for="short-term">54. ระยะสั้น</label>
-      <input type="text" id="short-term">
+            <label for="long-term">55. ระยะยาว</label>
+            <input type="text" id="long-term">
 
-      <label for="long-term">55. ระยะยาว</label>
-      <input type="text" id="long-term">
+            <label for="product">56. ผลิตภัณฑ์</label>
+            <input type="text" id="product">
 
-      <label for="product">56. ผลิตภัณฑ์</label>
-      <input type="text" id="product">
+            <label for="business-need">57. Business Need</label>
+            <input type="text" id="business-need">
 
-      <label for="business-need">57. Business Need</label>
-      <input type="text" id="business-need">
+            <label for="stakeholder-need">58. Stakeholder Need</label>
+            <input type="text" id="stakeholder-need">
 
-      <label for="stakeholder-need">58. Stakeholder Need</label>
-      <input type="text" id="stakeholder-need">
+            <label for="problem">59. ปัญหาที่พบ</label>
+            <input type="text" id="problem">
 
-      <label for="problem">59. ปัญหาที่พบ</label>
-      <input type="text" id="problem">
-
-      <label for="improvement-area">60. ท่านต้องการปรับปรุงกระบวนการใด</label>
-      <input type="text" id="improvement-area">
-    </fieldset>
+            <label for="improvement-area">60. ท่านต้องการปรับปรุงกระบวนการใด</label>
+            <input type="text" id="improvement-area">
+            </fieldset>
 
     <fieldset>
       <legend>ค่าระดับ Thailand i4.0 Index ณ ปัจจุบัน</legend>
