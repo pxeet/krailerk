@@ -3,508 +3,1141 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ฟอร์มโครงการ</title>
+  <title>รายงานสรุปการศึกษาความเป็นไปได้</title>
+  <link href="https://script.google.com/macros/s/AKfycbyWuX4syn5AJ5rLbQjpBL6cmBolUPF35ejTNxoUQohmbz4M0a41bfODk2fooGYGa5xRvw/exec" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
       font-family: 'Prompt', sans-serif;
       background-color: #fdf6f0;
       margin: 0;
-      padding: 2rem;
+      padding: 1rem;
       color: #333;
+      line-height: 1.6;
+    }
+    h1, h2, h3 {
+      color: #333;
+      margin-top: 1.5rem;
     }
     h1 {
       text-align: center;
-      color: #6b4c4c;
+      margin-bottom: 1.5rem;
+      color: #553a24;
     }
     form {
-      max-width: 800px;
-      margin: auto;
-      background: #fff5ec;
+      max-width: 1000px;
+      margin: 0 auto 2rem;
+      background: #fff;
       padding: 2rem;
       border-radius: 1rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .section {
+      background-color: #f9f1eb;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border: 1px solid #e6d8d0;
+    }
+    .section-title {
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #68462b;
+      border-bottom: 2px solid #e6b3a5;
+      padding-bottom: 0.5rem;
+    }
+    .field {
+      margin-bottom: 1rem;
     }
     label {
       display: block;
-      margin-top: 1rem;
-      font-weight: bold;
+      margin-top: 0.8rem;
+      margin-bottom: 0.3rem;
+      font-weight: 500;
+      color: #555;
     }
-    input, select {
+    input, select, textarea {
       width: 100%;
-      padding: 0.5rem;
-      margin-top: 0.3rem;
-      border: 1px solid #ccc;
+      padding: 0.7rem;
+      border: 1px solid #ddd;
       border-radius: 0.5rem;
+      background-color: #fff;
+      font-family: 'Prompt', sans-serif;
+      font-size: 0.95rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: #e6b3a5;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(230, 179, 165, 0.2);
+    }
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 0.5rem;
+    }
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-weight: normal;
+      cursor: pointer;
+    }
+    .checkbox-label input[type="checkbox"] {
+      width: auto;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .col {
+      flex: 1;
+      min-width: 250px;
+    }
+    .submit-btn {
+      background-color: #e6b3a5;
+      color: white;
+      border: none;
+      padding: 1rem 1.5rem;
+      font-size: 1.1rem;
+      font-weight: 500;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      display: block;
+      margin: 2rem auto 0;
+      transition: background-color 0.3s;
+    }
+    .submit-btn:hover {
+      background-color: #d9a395;
+    }
+    fieldset {
+      border: 1px solid #e6d8d0;
+      border-radius: 0.5rem;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    legend {
+      font-weight: 600;
+      color: #68462b;
+      padding: 0 0.5rem;
+    }
+    .required:after {
+      content: " *";
+      color: red;
+    }
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .row {
+        flex-direction: column;
+      }
+      .col {
+        min-width: 100%;
+      }
+      form {
+        padding: 1.5rem;
+      }
     }
   </style>
 </head>
 <body>
   <h1>รายงานสรุปการศึกษาความเป็นไปได้</h1>
-  <form action="https://script.google.com/macros/s/AKfycbzjaflZemSpNyf_LDPYeFghkW1JEFuDmaWmkavaN5mLRwA6W3e0rPAVprXHsAD2TNEiQA/exec" method="post">
-    <label>เสนอ บริษัท</label>
-    <input type="text" name="proposed_company" required>
-    <label>ระยะเวลา:เริ่มเรียน</label>
-    <input type="date" name="start_time" required>
-
-    <label>ระยะเวลา:สิ้นสุดการเรียน</label>
-    <input type="date" name="end_time" required>
-
-    <!-- รายชื่อสมาชิก 1-8 -->
-    <script>
-      const roles = ['หัวหน้า', 'สมาชิก', 'Mentor'];
-    </script>
+  <form action="https://script.google.com/macros/s/AKfycbxZ-Jvc20CF7vjQzqFI_KNmkG7ibsMFWzAyxMR7F2OhkPiA2GENLxZvYKsioHlWH5SQ/exec" method="post">
+  
+    <!-- ข้อมูลโครงการ -->
+    <div class="section">
+      <div class="section-title">ข้อมูลโครงการ</div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="เสนอ บริษัท " class="required">เสนอ บริษัท</label>
+          <input type="text" id="เสนอ บริษัท " name="เสนอ บริษัท " required>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="ระยะเวลา:เริ่มเรียน" class="required">ระยะเวลา: เริ่มเรียน</label>
+          <input type="date" id="ระยะเวลา:เริ่มเรียน" name="ระยะเวลา:เริ่มเรียน" required>
+        </div>
+        <div class="col">
+          <label for="ระยะเวลา:สิ้นสุดการเรียน" class="required">ระยะเวลา: สิ้นสุดการเรียน</label>
+          <input type="date" id="ระยะเวลา:สิ้นสุดการเรียน" name="ระยะเวลา:สิ้นสุดการเรียน" required>
+        </div>
+      </div>
+    </div>
     
-    <!-- Generate 8 ชื่อ-สกุล + สถานะ -->
-    <!-- We’ll insert them statically for now -->
-    <!-- ลำดับที่ 1 ถึง 8 -->
-    <label>ชื่อ-สกุล ลำดับที่ 1</label>
-    <input type="text" name="member_name_1" required>
-    <label>สถานะในโครงการ ลำดับที่ 1</label>
-    <select name="member_role_1" required>
-      <option>หัวหน้า</option>
-      <option>สมาชิก</option>
-      <option>Mentor</option>
-    </select>
-
-    <label>ชื่อ-สกุล ลำดับที่ 2</label>
-    <input type="text" name="member_name_2" required>
-    <label>สถานะในโครงการ ลำดับที่ 2</label>
-    <select name="member_role_2" required>
-      <option>หัวหน้า</option>
-      <option>สมาชิก</option>
-      <option>Mentor</option>
-    </select>
-
-    <label>ชื่อ-สกุล ลำดับที่ 3</label>
-    <input type="text" name="member_name_3" required>
-    <label>สถานะในโครงการ ลำดับที่ 3</label>
-    <select name="member_role_3" required>
-      <option>หัวหน้า</option>
-      <option>สมาชิก</option>
-      <option>Mentor</option>
-    </select>
-
-    <label>ชื่อ-สกุล ลำดับที่ 4</label>
-    <input type="text" name="member_name_4" required>
-    <label>สถานะในโครงการ ลำดับที่ 4</label>
-    <select name="member_role_4" required>
-      <option>หัวหน้า</option>
-      <option>สมาชิก</option>
-      <option>Mentor</option>
-    </select>
-
-    <label>ชื่อ-สกุล ลำดับที่ 5</label>
-    <input type="text" name="member_name_5" required>
-    <label>สถานะในโครงการ ลำดับที่ 5</label>
-    <select name="member_role_5" required>
-      <option>หัวหน้า</option>
-      <option>สมาชิก</option>
-      <option>Mentor</option>
-    </select>
-
-    <label>ชื่อ-สกุล ลำดับที่ 6</label>
-    <input type="text" name="member_name_6" required>
-    <label>สถานะในโครงการ ลำดับที่ 6</label>
-    <select name="member_role_6" required>
-      <option>หัวหน้า</option>
-      <option>สมาชิก</option>
-      <option>Mentor</option>
-    </select>
-
-    <label>ชื่อ-สกุล ลำดับที่ 7</label>
-    <input type="text" name="member_name_7" required>
-    <label>สถานะในโครงการ ลำดับที่ 7</label>
-    <select name="member_role_7" required>
-      <option>หัวหน้า</option>
-      <option>สมาชิก</option>
-      <option>Mentor</option>
-    </select>
-
-    <label>ชื่อ-สกุล ลำดับที่ 8</label>
-    <input type="text" name="member_name_8" required>
-    <label>สถานะในโครงการ ลำดับที่ 8</label>
-    <select name="member_role_8" required>
-      <option>หัวหน้า</option>
-      <option>สมาชิก</option>
-      <option>Mentor</option>
-    </select>
-	<h2>Company Profile ข้อมูลเบื้องต้นของบริษัท</h2>
-      <div class="form-group">
-        <label for="companyName">22. ชื่อบริษัท</label>
-        <input type="text" id="companyName" name="companyName" required>
+    <!-- รายชื่อสมาชิกทีม -->
+    <div class="section">
+      <div class="section-title">รายชื่อสมาชิกทีม</div>
+      
+      <!-- Member 1 -->
+      <div class="row">
+        <div class="col">
+          <label for="ชื่อ-สกุล ลำดับที่ 1" class="required">ชื่อ-สกุล ลำดับที่ 1</label>
+          <input type="text" id="ชื่อ-สกุล ลำดับที่ 1" name="ชื่อ-สกุล ลำดับที่ 1" required>
+        </div>
+        <div class="col">
+          <label for="สถานะในโครงการ ลำดับที่ 1 " class="required">สถานะในโครงการ</label>
+          <select id="สถานะในโครงการ ลำดับที่ 1 " name="สถานะในโครงการ ลำดับที่ 1 " required>
+            <option value="หัวหน้า">หัวหน้า</option>
+            <option value="สมาชิก">สมาชิก</option>
+            <option value="Mentor">Mentor</option>
+          </select>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="companyAddress">23. ที่อยู่</label>
-        <input type="text" id="companyAddress" name="companyAddress" required>
+      
+      <!-- Member 2-8 -->
+      <!-- Repeat pattern for members 2-8 -->
+      <div class="row">
+        <div class="col">
+          <label for="ชื่อ-สกุล ลำดับที่ 2" class="required">ชื่อ-สกุล ลำดับที่ 2</label>
+          <input type="text" id="ชื่อ-สกุล ลำดับที่ 2" name="ชื่อ-สกุล ลำดับที่ 2" required>
+        </div>
+        <div class="col">
+          <label for="สถานะในโครงการ ลำดับที่ 2" class="required">สถานะในโครงการ</label>
+          <select id="สถานะในโครงการ ลำดับที่ 2" name="สถานะในโครงการ ลำดับที่ 2" required>
+            <option value="หัวหน้า">หัวหน้า</option>
+            <option value="สมาชิก">สมาชิก</option>
+            <option value="Mentor">Mentor</option>
+          </select>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="companyPhone">24. เบอร์โทรศัพท์บริษัท</label>
-        <input type="text" id="companyPhone" name="companyPhone" required>
+      <div class="row">
+        <div class="col">
+          <label for="ชื่อ-สกุล ลำดับที่ 3" class="required">ชื่อ-สกุล ลำดับที่ 3</label>
+          <input type="text" id="ชื่อ-สกุล ลำดับที่ 3" name="ชื่อ-สกุล ลำดับที่ 3" required>
+        </div>
+        <div class="col">
+          <label for="สถานะในโครงการ ลำดับที่ 3" class="required">สถานะในโครงการ</label>
+          <select id="สถานะในโครงการ ลำดับที่ 3" name="สถานะในโครงการ ลำดับที่ 3" required>
+            <option value="หัวหน้า">หัวหน้า</option>
+            <option value="สมาชิก">สมาชิก</option>
+            <option value="Mentor">Mentor</option>
+          </select>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="companyEmail">25. E-mail</label>
-        <input type="email" id="companyEmail" name="companyEmail" required>
+      <div class="row">
+        <div class="col">
+          <label for="ชื่อ-สกุล ลำดับที่ 4" class="required">ชื่อ-สกุล ลำดับที่ 4</label>
+          <input type="text" id="ชื่อ-สกุล ลำดับที่ 4" name="ชื่อ-สกุล ลำดับที่ 4" required>
+        </div>
+        <div class="col">
+          <label for="สถานะในโครงการ ลำดับที่ 4" class="required">สถานะในโครงการ</label>
+          <select id="สถานะในโครงการ ลำดับที่ 4" name="สถานะในโครงการ ลำดับที่ 4" required>
+            <option value="หัวหน้า">หัวหน้า</option>
+            <option value="สมาชิก">สมาชิก</option>
+            <option value="Mentor">Mentor</option>
+          </select>
+        </div>
       </div>
+      <div class="row">
+        <div class="col">
+          <label for="ชื่อ-สกุล ลำดับที่ 5" class="required">ชื่อ-สกุล ลำดับที่ 5</label>
+          <input type="text" id="ชื่อ-สกุล ลำดับที่ 5" name="ชื่อ-สกุล ลำดับที่ 5" required>
+        </div>
+        <div class="col">
+          <label for="สถานะในโครงการ ลำดับที่ 5" class="required">สถานะในโครงการ</label>
+          <select id="สถานะในโครงการ ลำดับที่ 5" name="สถานะในโครงการ ลำดับที่ 5" required>
+            <option value="หัวหน้า">หัวหน้า</option>
+            <option value="สมาชิก">สมาชิก</option>
+            <option value="Mentor">Mentor</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="ชื่อ-สกุล ลำดับที่ 6" class="required">ชื่อ-สกุล ลำดับที่ 6</label>
+          <input type="text" id="ชื่อ-สกุล ลำดับที่ 6" name="ชื่อ-สกุล ลำดับที่ 6" required>
+        </div>
+        <div class="col">
+          <label for="สถานะในโครงการ ลำดับที่ 6" class="required">สถานะในโครงการ</label>
+          <select id="สถานะในโครงการ ลำดับที่ 6" name="สถานะในโครงการ ลำดับที่ 6" required>
+            <option value="หัวหน้า">หัวหน้า</option>
+            <option value="สมาชิก">สมาชิก</option>
+            <option value="Mentor">Mentor</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="ชื่อ-สกุล ลำดับที่ 7" class="required">ชื่อ-สกุล ลำดับที่ 7</label>
+          <input type="text" id="ชื่อ-สกุล ลำดับที่ 7" name="ชื่อ-สกุล ลำดับที่ 7" required>
+        </div>
+        <div class="col">
+          <label for="สถานะในโครงการ ลำดับที่ 7" class="required">สถานะในโครงการ</label>
+          <select id="สถานะในโครงการ ลำดับที่ 7" name="สถานะในโครงการ ลำดับที่ 7" required>
+            <option value="หัวหน้า">หัวหน้า</option>
+            <option value="สมาชิก">สมาชิก</option>
+            <option value="Mentor">Mentor</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="ชื่อ-สกุล ลำดับที่ 8" class="required">ชื่อ-สกุล ลำดับที่ 8</label>
+          <input type="text" id="ชื่อ-สกุล ลำดับที่ 8" name="ชื่อ-สกุล ลำดับที่ 8" required>
+        </div>
+        <div class="col">
+          <label for="สถานะในโครงการ ลำดับที่ 8" class="required">สถานะในโครงการ</label>
+          <select id="สถานะในโครงการ ลำดับที่ 8" name="สถานะในโครงการ ลำดับที่ 8" required>
+            <option value="หัวหน้า">หัวหน้า</option>
+            <option value="สมาชิก">สมาชิก</option>
+            <option value="Mentor">Mentor</option>
+          </select>
+        </div>
+      </div>
+      <!-- Additional members would follow the same pattern -->
+      <!-- For brevity, showing just two members in the code -->
+      <!-- The form would include all 8 members in the final implementation -->
+    </div>
+    
+    <!-- Company Profile -->
+    <div class="section">
+      <div class="section-title">Company Profile ข้อมูลเบื้องต้นของบริษัท</div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="ชื่อบริษัท" class="required">ชื่อบริษัท</label>
+          <input type="text" id="ชื่อบริษัท" name="ชื่อบริษัท" required>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="ที่อยู่ " class="required">ที่อยู่</label>
+          <textarea id="ที่อยู่ " name="ที่อยู่ " required></textarea>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="เบอร์โทรศัพท์บริษัท" class="required">เบอร์โทรศัพท์บริษัท</label>
+          <input type="tel" id="เบอร์โทรศัพท์บริษัท" name="เบอร์โทรศัพท์บริษัท" required>
+        </div>
+        <div class="col">
+          <label for="E-mail" class="required">E-mail</label>
+          <input type="email" id="E-mail" name="E-mail" required>
+        </div>
+      </div>
+      
+      <!-- Management contact info -->
+      <div class="row">
+        <div class="col">
+          <label for="กรรมการผู้จัดการ (ชื่อ-สกุล)" class="required">กรรมการผู้จัดการ (ชื่อ-สกุล)</label>
+          <input type="text" id="กรรมการผู้จัดการ (ชื่อ-สกุล)" name="กรรมการผู้จัดการ (ชื่อ-สกุล)" required>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="เบอร์มือถือ กรรมการผู้จัดการ" class="required">เบอร์มือถือ กรรมการผู้จัดการ</label>
+          <input type="tel" id="เบอร์มือถือ กรรมการผู้จัดการ" name="เบอร์มือถือ กรรมการผู้จัดการ" required>
+        </div>
+        <div class="col">
+          <label for="E-mail กรรมการผู้จัดการ" class="required">E-mail กรรมการผู้จัดการ</label>
+          <input type="email" id="E-mail กรรมการผู้จัดการ" name="E-mail กรรมการผู้จัดการ" required>
+        </div>
+      </div>
+      
+      <!-- Coordinator contact info -->
+      <div class="row">
+        <div class="col">
+          <label for="ผู้ประสานงานหลัก (ชื่อ-สกุล)" class="required">ผู้ประสานงานหลัก (ชื่อ-สกุล)</label>
+          <input type="text" id="ผู้ประสานงานหลัก (ชื่อ-สกุล)" name="ผู้ประสานงานหลัก (ชื่อ-สกุล)" required>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="เบอร์มือถือ ผู้ประสานงานหลัก" class="required">เบอร์มือถือ ผู้ประสานงานหลัก</label>
+          <input type="tel" id="เบอร์มือถือ ผู้ประสานงานหลัก" name="เบอร์มือถือ ผู้ประสานงานหลัก" required>
+        </div>
+        <div class="col">
+          <label for="E-mail ผู้ประสานงานหลัก" class="required">E-mail ผู้ประสานงานหลัก</label>
+          <input type="email" id="E-mail ผู้ประสานงานหลัก" name="E-mail ผู้ประสานงานหลัก" required>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Shareholder Info -->
+    <div class="section">
+      <div class="section-title">สัดส่วนผู้ถือหุ้น</div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="ไทย.................. % ">ไทย (%)</label>
+          <input type="number" id="ไทย.................. % " name="ไทย.................. % " min="0" max="100">
+        </div>
+        <div class="col">
+          <label for="ต่างชาติ................... %">ต่างชาติ (%)</label>
+          <input type="number" id="ต่างชาติ................... %" name="ต่างชาติ................... %" min="0" max="100">
+        </div>
+      </div>
+    </div>
+    
+    <!-- Business Info -->
+    <div class="section">
+      <div class="section-title">ประเภทธุรกิจ</div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="ประเภทธุรกิจ">ประเภทธุรกิจ</label>
+          <select id="ประเภทธุรกิจ" name="ประเภทธุรกิจ">
+            <option value="การผลิต">การผลิต</option>
+            <option value="บริการ">บริการ</option>
+            <option value="การเกษตร">การเกษตร</option>
+          </select>
+        </div>
+        <div class="col">
+          <label for="ก่อตั้งเมื่อ พ.ศ">ก่อตั้งเมื่อ พ.ศ</label>
+          <input type="number" id="ก่อตั้งเมื่อ พ.ศ" name="ก่อตั้งเมื่อ พ.ศ">
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="ทุนจดทะเบียน(บาท)">ทุนจดทะเบียน (บาท)</label>
+          <input type="number" id="ทุนจดทะเบียน(บาท)" name="ทุนจดทะเบียน(บาท)">
+        </div>
+        <div class="col">
+          <label for="กิจการอยู่ในอุตสาหกรรม">กิจการอยู่ในอุตสาหกรรม</label>
+          <input type="text" id="กิจการอยู่ในอุตสาหกรรม" name="กิจการอยู่ในอุตสาหกรรม">
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="พื้นที่โรงงาน (ไร่)">พื้นที่โรงงาน (ไร่)</label>
+          <input type="text" id="พื้นที่โรงงาน (ไร่)" name="พื้นที่โรงงาน (ไร่)">
+        </div>
+      </div>
+      
+      <!-- Production Process -->
+      <div class="row">
+        <div class="col">
+          <label>รูปแบบกระบวนการผลิต (เลือกได้มากกว่า 1)</label>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" name="รูปแบบกระบวนการผลิต (เลือกได้มากกว่า 1)" value="Made to order"> Made to order
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="รูปแบบกระบวนการผลิต (เลือกได้มากกว่า 1)" value="Made to stock"> Made to stock
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="รูปแบบกระบวนการผลิต (เลือกได้มากกว่า 1)" value="Assembly to order"> Assembly to order
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="รูปแบบกระบวนการผลิต (เลือกได้มากกว่า 1)" value="Engineering to order"> Engineering to order
+            </label>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="อื่นๆ โปรดระบุ">อื่นๆ โปรดระบุ</label>
+          <input type="text" id="อื่นๆ โปรดระบุ" name="อื่นๆ โปรดระบุ">
+        </div>
+      </div>
+      
+      <!-- Product Characteristics -->
+      <div class="row">
+        <div class="col">
+          <label>ลักษณะผลิตภัณฑ์ (เลือกได้มากกว่า 1)</label>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" name="ลักษณะผลิตภัณฑ์ (เลือกได้มากกว่า 1)" value="ตราสินค้าของตนเอง"> ตราสินค้าของตนเอง
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="ลักษณะผลิตภัณฑ์ (เลือกได้มากกว่า 1)" value="Made to stock"> Made to stock
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="ลักษณะผลิตภัณฑ์ (เลือกได้มากกว่า 1)" value="OEM รับจ้างผลิตภัณฑ์"> OEM รับจ้างผลิตภัณฑ์
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="ลักษณะผลิตภัณฑ์ (เลือกได้มากกว่า 1)" value="ODM รับออกแบบผลิตภัณฑ์"> ODM รับออกแบบผลิตภัณฑ์
+            </label>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="อื่นๆ โปรดระบุ 1">อื่นๆ โปรดระบุ</label>
+          <input type="text" id="อื่นๆ โปรดระบุ 1" name="อื่นๆ โปรดระบุ 1">
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="ผลิตภัณฑ์/สินค้าที่ผลิตหลัก">ผลิตภัณฑ์/สินค้าที่ผลิตหลัก</label>
+          <input type="text" id="ผลิตภัณฑ์/สินค้าที่ผลิตหลัก" name="ผลิตภัณฑ์/สินค้าที่ผลิตหลัก">
+        </div>
+      </div>
+    </div>
 
-        <label>26. กรรมการผู้จัดการ (ชื่อ-สกุล)
-     <input type="text" required>
-        </label>
-
-        <label>27. เบอร์มือถือ กรรมการผู้จัดการ
-            <input type="text" required>
-        </label>
-
-        <label>28. E-mail กรรมการผู้จัดการ
-            <input type="email" required>
-        </label>
-
-        <label>29. ผู้ประสานงานหลัก (ชื่อ-สกุล)
-            <input type="text" required>
-        </label>
-
-        <label>30. เบอร์มือถือ ผู้ประสานงานหลัก
-            <input type="text" required>
-        </label>
-
-        <label>31. E-mail ผู้ประสานงานหลัก
-            <input type="email" required>
-        </label>
-
-        <h2>สัดส่วนผู้ถือหุ้น</h2>
-        <label>32. ไทย (%)
-            <input type="number" min="0" max="100">
-        </label>
-
-        <label>33. ต่างชาติ (%)
-            <input type="number" min="0" max="100">
-        </label>
-
-        <h2>ประเภทธุรกิจ</h2>
-        <label>34. ประเภทธุรกิจ
-            <select>
-            <option>การผลิต</option>
-            <option>บริการ</option>
-            <option>การเกษตร</option>
+      <div class="row">
+        <div class="col">
+          <label for="วัตถุดิบหลัก">วัตถุดิบหลัก</label>
+          <input type="text" id="วัตถุดิบหลัก" name="วัตถุดิบหลัก">
+        </div>
+      </div>
+    </div>
+    
+    <!-- Raw Material Sources -->
+    <div class="section">
+      <div class="section-title">แหล่งที่มาของวัตถุดิบ</div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="ในประเทศ(%)">ในประเทศ (%)</label>
+          <input type="number" id="ในประเทศ(%)" name="ในประเทศ(%)" min="0" max="100">
+        </div>
+        <div class="col">
+          <label for="ต่างประเเทศ(%)">ต่างประเทศ (%)</label>
+          <input type="number" id="ต่างประเเทศ(%)" name="ต่างประเเทศ(%)" min="0" max="100">
+        </div>
+      </div>
+    </div>
+    
+    <!-- Current Customers -->
+    <div class="section">
+      <div class="section-title">ลูกค้าปัจจุบัน</div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="ตลาดในประเทศ (%)">ตลาดในประเทศ (%)</label>
+          <input type="number" id="ตลาดในประเทศ (%)" name="ตลาดในประเทศ (%)" min="0" max="100">
+        </div>
+        <div class="col">
+          <label for="ตลาดต่างประเทศ (%)">ตลาดต่างประเทศ (%)</label>
+          <input type="number" id="ตลาดต่างประเทศ (%)" name="ตลาดต่างประเทศ (%)" min="0" max="100">
+        </div>
+      </div>
+    </div>
+    
+    <!-- Work Schedule -->
+    <div class="section">
+      <div class="section-title">กำหนดการทำงาน</div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="จำนวนวันทำงานต่อสัปดาห์">จำนวนวันทำงานต่อสัปดาห์</label>
+          <input type="number" id="จำนวนวันทำงานต่อสัปดาห์" name="จำนวนวันทำงานต่อสัปดาห์" min="1" max="7">
+        </div>
+        <div class="col">
+          <label for="ชั่วโมงการทำงานต่อปี">ชั่วโมงการทำงานต่อปี</label>
+          <input type="number" id="ชั่วโมงการทำงานต่อปี" name="ชั่วโมงการทำงานต่อปี">
+        </div>
+      </div>
+    </div>
+    
+    <!-- Quality System -->
+    <div class="section">
+      <div class="section-title">ระบบคุณภาพ</div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="ระบบคุณภาพ (ISO, IATF)">ระบบคุณภาพ (ISO, IATF)</label>
+          <input type="text" id="ระบบคุณภาพ (ISO, IATF)" name="ระบบคุณภาพ (ISO, IATF)">
+        </div>
+      </div>
+    </div>
+    
+    <!-- Interview Info -->
+    <div class="section">
+      <div class="section-title">Interview and Meeting ข้อมูลจากการสัมภาษณ์และสอบถาม</div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="ชื่อ-นามสกุล .">ชื่อ-นามสกุล</label>
+          <input type="text" id="ชื่อ-นามสกุล ." name="ชื่อ-นามสกุล .">
+        </div>
+        <div class="col">
+          <label for=". ตำแหน่ง (เป็นผู้มีอำนาจการตัดสินใจ)">ตำแหน่ง (เป็นผู้มีอำนาจการตัดสินใจ)</label>
+          <input type="text" id=". ตำแหน่ง (เป็นผู้มีอำนาจการตัดสินใจ)" name=". ตำแหน่ง (เป็นผู้มีอำนาจการตัดสินใจ)">
+        </div>
+      </div>
+    </div>
+    
+    <!-- Business Perspectives -->
+    <div class="section">
+      <div class="section-title">มุมมองของธุรกิจ</div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="มุมมองของธุรกิจ ปัจจุบัน">ปัจจุบัน</label>
+          <textarea id="มุมมองของธุรกิจ ปัจจุบัน" name="มุมมองของธุรกิจ ปัจจุบัน"></textarea>
+        </div>
+      </div>
+      
+      <div class="section-title">อนาคต</div>
+      <div class="row">
+        <div class="col">
+          <label for="shortTerm">ระยะสั้น</label>
+          <textarea id="ระยะสั้น " name="ระยะสั้น "></textarea>
+        </div>
+        <div class="col">
+          <label for="ระยะยาว ">ระยะยาว</label>
+          <textarea id="ระยะยาว " name="ระยะยาว "></textarea>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="ผลิตภัณฑ์">ผลิตภัณฑ์</label>
+          <textarea id="ผลิตภัณฑ์" name="ผลิตภัณฑ์"></textarea>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="Business Need">Business Need</label>
+          <textarea id="Business Need" name="Business Need"></textarea>
+        </div>
+        <div class="col">
+          <label for="Stakeholder Need">Stakeholder Need</label>
+          <textarea id="Stakeholder Need" name="Stakeholder Need"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="System Need">System Need</label>
+          <textarea id="System Need" name="System Need"></textarea>
+        </div>
+      <div class="row">
+        <div class="col">
+          <label for="ปัญหาที่พบ ">ปัญหาที่พบ</label>
+          <textarea id="ปัญหาที่พบ " name="ปัญหาที่พบ "></textarea>
+        </div>
+        <div class="col">
+          <label for="ท่านต้องการปรับปรุงกระบวนการใด">ท่านต้องการปรับปรุงกระบวนการใด</label>
+          <textarea id="ท่านต้องการปรับปรุงกระบวนการใด" name="ท่านต้องการปรับปรุงกระบวนการใด"></textarea>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Thailand i4.0 Index -->
+    <div class="section">
+      <div class="section-title">ค่าระดับ Thailand i4.0 Index</div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="ค่าระดับ Index ก่อนเริ่มโครงการ (As is)">ค่าระดับ Index ก่อนเริ่มโครงการ (As is)</label>
+          <input type="text" id="ค่าระดับ Index ก่อนเริ่มโครงการ (As is)" name="ค่าระดับ Index ก่อนเริ่มโครงการ (As is)">
+        </div>
+        <div class="col">
+          <label for="ค่าระดับ Index ที่คาดหวังหลังดำเนินโครงการ (To be)">ค่าระดับ Index ที่คาดหวังหลังดำเนินโครงการ (To be)</label>
+          <input type="text" id="ค่าระดับ Index ที่คาดหวังหลังดำเนินโครงการ (To be)" name="ค่าระดับ Index ที่คาดหวังหลังดำเนินโครงการ (To be)">
+        </div>
+      </div>
+    </div>
+    
+    <!-- Requirements and Constraints Summary -->
+    <div class="section">
+      <div class="section-title">Requirement and Constraints Summary</div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="Difficult  High">Difficult High</label>
+          <textarea id="Difficult  High" name="Difficult  High"></textarea>
+        </div>
+        <div class="col">
+          <label for="Difficult  Low">Difficult Low</label>
+          <textarea id="Difficult  Low" name="Difficult  Low"></textarea>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="Easy  High">Easy High</label>
+          <textarea id="Easy  High" name="Easy  High"></textarea>
+        </div>
+        <div class="col">
+          <label for="Easy  Low">Easy Low</label>
+          <textarea id="Easy  Low" name="Easy  Low"></textarea>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="Constraints (ปัจจัยใดที่ทำให้ไม่เกิดการลงลงทุน)">Constraints (ปัจจัยใดที่ทำให้ไม่เกิดการลงลงทุน)</label>
+          <textarea id="Constraints (ปัจจัยใดที่ทำให้ไม่เกิดการลงลงทุน)" name="Constraints (ปัจจัยใดที่ทำให้ไม่เกิดการลงลงทุน)"></textarea>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Objective -->
+    <div class="section">
+      <div class="section-title">Objective</div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="เพิ่มผลผลิต ">เพิ่มผลผลิต</label>
+          <input type="text" id="เพิ่มผลผลิต " name="เพิ่มผลผลิต ">
+        </div>
+        <div class="col">
+          <label for="เพิ่มรายได้ ">เพิ่มรายได้</label>
+          <input type="text" id="เพิ่มรายได้ " name="เพิ่มรายได้ ">
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="ระยะเวลาคืนทุน ">ระยะเวลาคืนทุน</label>
+          <input type="text" id="ระยะเวลาคืนทุน " name="ระยะเวลาคืนทุน ">
+        </div>
+        <div class="col">
+          <label for="ระยะเวลาคืนทุน ">ระยะเวลาคืนทุน</label>
+          <input type="text" id="ระยะเวลาคืนทุน " name="ระยะเวลาคืนทุน ">
+        </div>
+      </div>
+    </div>
+        <div class="col">
+          <label for="อื่นๆ">อื่นๆ</label>
+          <input type="text" id="อื่นๆ" name="อื่นๆ">
+        </div>
+      </div>
+    </div>
+    
+    <!-- Scenarios -->
+    <div class="section">
+      <div class="section-title">Scenario 1</div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="มูลค่าการลงทุน 1">มูลค่าการลงทุน 1</label>
+          <input type="text" id="มูลค่าการลงทุน 1" name="มูลค่าการลงทุน 1">
+        </div>
+        <div class="col">
+          <label for="ระยะเวลาการลงทุน 1">ระยะเวลาการลงทุน 1</label>
+          <input type="text" id="ระยะเวลาการลงทุน 1" name="ระยะเวลาการลงทุน 1">
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 1">ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 1</label>
+          <input type="text" id="ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 1" name="ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 1">
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="NPV(Net Present Value)มูลค่าปัจจุบันสุทธิ 1 ">NPV (Net Present Value) มูลค่าปัจจุบันสุทธิ 1</label>
+          <input type="text" id="NPV(Net Present Value)มูลค่าปัจจุบันสุทธิ 1 " name="NPV(Net Present Value)มูลค่าปัจจุบันสุทธิ 1 ">
+        </div>
+        <div class="col">
+          <label for="IRR( Internal Rate of Return)อัตราผลตอบแทนการลงทุนภายในของโครงการ 1 ">IRR (Internal Rate of Return) อัตราผลตอบแทนการลงทุนภายในของโครงการ 1</label>
+          <input type="text" id="IRR( Internal Rate of Return)อัตราผลตอบแทนการลงทุนภายในของโครงการ 1 " name="IRR( Internal Rate of Return)อัตราผลตอบแทนการลงทุนภายในของโครงการ 1 ">
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="MIRR(Modify Internal Rate of Return)อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 1">MIRR (Modify Internal Rate of Return) อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 1</label>
+          <input type="text" id="MIRR(Modify Internal Rate of Return)อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 1" name="MIRR(Modify Internal Rate of Return)อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 1">
+        </div>
+        <div class="col">
+          <label for="DPB(Discount Payback Period)ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 1">DPB (Discount Payback Period) ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 1</label>
+          <input type="text" id="DPB(Discount Payback Period)ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 1" name="DPB(Discount Payback Period)ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 1">
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title">Scenario 2</div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="มูลค่าการลงทุน 2">มูลค่าการลงทุน 2</label>
+          <input type="text" id="มูลค่าการลงทุน 2" name="มูลค่าการลงทุน 2">
+        </div>
+        <div class="col">
+          <label for="ระยะเวลาการลงทุน 2">ระยะเวลาการลงทุน 2</label>
+          <input type="text" id="ระยะเวลาการลงทุน 2" name="ระยะเวลาการลงทุน 2">
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 2">ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 2</label>
+          <input type="text" id="ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 2" name="ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 2">
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="NPV(Net Present Value)มูลค่าปัจจุบันสุทธิ 2">NPV (Net Present Value) มูลค่าปัจจุบันสุทธิ 2</label>
+          <input type="text" id="NPV(Net Present Value)มูลค่าปัจจุบันสุทธิ 2" name="NPV(Net Present Value)มูลค่าปัจจุบันสุทธิ 2">
+        </div>
+        <div class="col">
+          <label for="IRR( Internal Rate of Return)อัตราผลตอบแทนการลงทุนภายในของโครงการ 2">IRR (Internal Rate of Return) อัตราผลตอบแทนการลงทุนภายในของโครงการ 2</label>
+          <input type="text" id="IRR( Internal Rate of Return)อัตราผลตอบแทนการลงทุนภายในของโครงการ 2" name="IRR( Internal Rate of Return)อัตราผลตอบแทนการลงทุนภายในของโครงการ 2">
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="MIRR(Modify Internal Rate of Return)อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 2">MIRR (Modify Internal Rate of Return) อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 2</label>
+          <input type="text" id="MIRR(Modify Internal Rate of Return)อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 2" name="MIRR(Modify Internal Rate of Return)อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 2">
+        </div>
+        <div class="col">
+          <label for="DPB(Discount Payback Period)ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 2">DPB (Discount Payback Period) ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 2</label>
+          <input type="text" id="DPB(Discount Payback Period)ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 2" name="DPB(Discount Payback Period)ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 2">
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title">Scenario 3</div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="มูลค่าการลงทุน 3">มูลค่าการลงทุน 3</label>
+          <input type="text" id="มูลค่าการลงทุน 3" name="มูลค่าการลงทุน 3">
+        </div>
+        <div class="col">
+          <label for="ระยะเวลาการลงทุน 3">ระยะเวลาการลงทุน 3</label>
+          <input type="text" id="ระยะเวลาการลงทุน 3" name="ระยะเวลาการลงทุน 3">
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 3">ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 3</label>
+          <input type="text" id="ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 3" name="ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 3">
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="NPV(Net Present Value)มูลค่าปัจจุบันสุทธิ 3">NPV (Net Present Value) มูลค่าปัจจุบันสุทธิ 3</label>
+          <input type="text" id="NPV(Net Present Value)มูลค่าปัจจุบันสุทธิ 3" name="NPV(Net Present Value)มูลค่าปัจจุบันสุทธิ 3">
+        </div>
+        <div class="col">
+          <label for="IRR( Internal Rate of Return)อัตราผลตอบแทนการลงทุนภายในของโครงการ 3">IRR (Internal Rate of Return) อัตราผลตอบแทนการลงทุนภายในของโครงการ 3</label>
+          <input type="text" id="IRR( Internal Rate of Return)อัตราผลตอบแทนการลงทุนภายในของโครงการ 3" name="IRR( Internal Rate of Return)อัตราผลตอบแทนการลงทุนภายในของโครงการ 3">
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="MIRR(Modify Internal Rate of Return)อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 3">MIRR (Modify Internal Rate of Return) อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 3</label>
+          <input type="text" id="MIRR(Modify Internal Rate of Return)อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 3" name="MIRR(Modify Internal Rate of Return)อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 3">
+        </div>
+        <div class="col">
+          <label for="DPB(Discount Payback Period)ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 3">DPB (Discount Payback Period) ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 3</label>
+          <input type="text" id="DPB(Discount Payback Period)ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 3" name="DPB(Discount Payback Period)ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 3">
+        </div>
+      </div>
+    </div>
+    
+    <!-- Additional scenarios (2-3) would follow the same pattern -->
+    
+    <!-- Scenario Selection -->
+    <div class="section">
+      <div class="section-title">เลือก Scenario</div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="No./item 1">No./item 1</label>
+          <select id="No./item 1" name="No./item 1">
+            <option value="Scenario 1">Scenario 1</option>
+            <option value="Scenario 2">Scenario 2</option>
+            <option value="Scenario 3">Scenario 3</option>
+          
+          </select>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="Note 1">Note 1</label>
+            <input type="text" id="Note 1" name="Note 1">
+          </div>
+        <div class="col">
+          <label for="No./item 2">No./item 2</label>
+          <select id="No./item 2" name="No./item 2">
+            <option value="Scenario 1">Scenario 1</option>
+            <option value="Scenario 2">Scenario 2</option>
+            <option value="Scenario 3">Scenario 3</option>
+            
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="Note 2">Note 2</label>
+          <input type="text" id="Note 2" name="Note 2">
+        </div>
+      <div class="row">
+        <div class="col">
+          <label for="No./item 3">No./item 3</label>
+          <select id="No./item 3" name="No./item 3">
+            <option value="Scenario
+            <select id="No./item 3" name="No./item 3">
+              <option value="Scenario 1">Scenario 1</option>
+              <option value="Scenario 2">Scenario 2</option>
+              <option value="Scenario 3">Scenario 3</option>
+            
             </select>
-        </label>
-
-        <label>35. ก่อตั้งเมื่อ พ.ศ
-            <input type="number">
-        </label>
-
-        <label>36. ทุนจดทะเบียน(บาท)
-            <input type="number">
-        </label>
-
-        <label>37. กิจการอยู่ในอุตสาหกรรม
-            <input type="text">
-        </label>
-
-        <label>38. พื้นที่โรงงาน (ไร่)
-            <input type="text">
-        </label>
-
-        <label>39. รูปแบบกระบวนการผลิต (เลือกได้มากกว่า 1)</label>
-        <div class="multi-select">
-            <label><input type="checkbox"> Made to order</label>
-            <label><input type="checkbox"> Made to stock</label>
-            <label><input type="checkbox"> Assembly to order</label>
-            <label><input type="checkbox"> Engineering to order</label>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label for="Note 3">Note 3</label>
+              <input type="text" id="Note 3" name="Note 3">
+            </div>
+          <div class="col">
+            <label for="No./item 4">No./item 4</label>
+            <select id="No./item 4" name="No./item 4">
+              <option value="Scenario 1">Scenario 1</option>
+              <option value="Scenario 2">Scenario 2</option>
+              <option value="Scenario 3">Scenario 3</option>
+              
+            </select>
+          </div>
         </div>
-
+        <div class="row">
+          <div class="col">
+            <label for="Note 4">Note 4</label>
+            <input type="text" id="Note 4" name="Note 4">
+          </div>
+        <div class="row">
+          <div class="col">
+            <label for="No./item 5">No./item 5</label>
+            <select id="No./item 5" name="No./item 5">
+              <option value="Scenario 1">Scenario 1</option>
+              <option value="Scenario 2">Scenario 2</option>
+              <option value="Scenario 3">Scenario 3</option>
+              
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="Note 5">Note 5</label>
+            <input type="text" id="Note 5" name="Note 5">
+          </div>
+        <div class="row">
+          <div class="col">
+            <label for="Requirement" class="required">Requirement</label>
+            <textarea id="Requirement" name="Requirement" required></textarea>
+          </div>
+          <div class="col">
+            <label for="Thailand i4 index" class="required">Thailand i4 index</label>
+            <input type="text" id="Thailand i4 index" name="Thailand i4 index" required>
+          </div>
+        </div>
         
-        <label>40. อื่นๆ โปรดระบุ
-            <input type="text">
-        </label>
-
-        <label>41. ลักษณะผลิตภัณฑ์ (เลือกได้มากกว่า 1)</label>
-        <div class="multi-select">
-            <label><input type="checkbox"> ตราสินค้าของตนเอง</label>
-            <label><input type="checkbox"> Made to stock</label>
-            <label><input type="checkbox"> OEM รับจ้างผลิตภัณฑ์</label>
-            <label><input type="checkbox"> ODM รับออกแบบผลิตภัณฑ์</label>
+        <div class="row">
+          <div class="col">
+            <label for="Constraints" class="required">Constraints</label>
+            <textarea id="Constraints" name="Constraints" required></textarea>
+          </div>
         </div>
-
-        <label>42. อื่นๆ โปรดระบุ 1
-            <input type="text">
-        </label>
-
-        <label>43. วัตถุดิบหลัก
-            <input type="text">
-        </label>
-
-        <h2>แหล่งที่มาของวัตถุดิบ</h2>
-        <label>44. ในประเทศ (%)
-            <input type="text">
-        </label>
-        <label>45. ต่างประเทศ (%)
-            <input type="text">
-        </label>
-        <legend>ลูกค้าปัจจุบัน</legend>
-            <label for="domestic-market">46. ตลาดในประเทศ (%)</label>
-            <input type="text" id="domestic-market">
-
-            <label for="foreign-market">47. ตลาดต่างประเทศ (%)</label>
-            <input type="text" id="foreign-market">
-
-            <label for="work-days">48. จำนวนวันทำงานต่อสัปดาห์</label>
-            <input type="text" id="work-days">
-
-            <label for="work-hours">49. ชั่วโมงการทำงานต่อปี</label>
-            <input type="text" id="work-hours">
-
-            <label for="quality-system">50. ระบบคุณภาพ (ISO, IATF)</label>
-            <input type="text" id="quality-system">
-            </fieldset>
-
-            <fieldset>
-            <legend>Interview and Meeting ข้อมูลจากการสัมภาษณ์และสอบถาม</legend>
-            <label for="interview-name">51. ชื่อ-นามสกุล</label>
-            <input type="text" id="interview-name">
-
-            <label for="interview-position">52. ตำแหน่ง (เป็นผู้มีอำนาจการตัดสินใจ)</label>
-            <input type="text" id="interview-position">
-            </fieldset>
-
-            <fieldset>
-            <legend>มุมมองของธุรกิจ</legend>
-            <label for="present">53. ปัจจุบัน</label>
-            <input type="text" id="present">
-            </fieldset>
-
-            <fieldset>
-            <legend>อนาคต</legend>
-            <label for="short-term">54. ระยะสั้น</label>
-            <input type="text" id="short-term">
-
-            <label for="long-term">55. ระยะยาว</label>
-            <input type="text" id="long-term">
-
-            <label for="product">56. ผลิตภัณฑ์</label>
-            <input type="text" id="product">
-
-            <label for="business-need">57. Business Need</label>
-            <input type="text" id="business-need">
-
-            <label for="stakeholder-need">58. Stakeholder Need</label>
-            <input type="text" id="stakeholder-need">
-
-            <label for="problem">59. ปัญหาที่พบ</label>
-            <input type="text" id="problem">
-
-            <label for="improvement-area">60. ท่านต้องการปรับปรุงกระบวนการใด</label>
-            <input type="text" id="improvement-area">
-            </fieldset>
-
-    <fieldset>
-      <legend>ค่าระดับ Thailand i4.0 Index ณ ปัจจุบัน</legend>
-      <label for="as-is">61. ค่าระดับ Index ก่อนเริ่มโครงการ (As is)</label>
-      <input type="text" id="as-is">
-
-      <label for="to-be">62. ค่าระดับ Index ที่คาดหวังหลังดำเนินโครงการ (To be)</label>
-      <input type="text" id="to-be">
-    </fieldset>
-
-    <fieldset>
-      <legend>Requirement and Constraints Summary</legend>
-      <label for="difficult-high">63. Difficult High</label>
-      <input type="text" id="difficult-high">
-
-      <label for="difficult-low">64. Difficult Low</label>
-      <input type="text" id="difficult-low">
-
-      <label for="easy-high">65. Easy High</label>
-      <input type="text" id="easy-high">
-
-      <label for="easy-low">66. Easy Low</label>
-      <input type="text" id="easy-low">
-
-      <label for="constraints">67. Constraints (ปัจจัยใดที่ทำให้ไม่เกิดการลงลงทุน)</label>
-      <input type="text" id="constraints">
-    </fieldset>
-	 <div class="section">
-    <h2>Objective</h2>
-    <div class="field"><label>68. เพิ่มผลผลิต</label><input type="text"></div>
-    <div class="field"><label>69. เพิ่มรายได้</label><input type="text"></div>
-    <div class="field"><label>70. ระยะเวลาคืนทุน</label><input type="text"></div>
-    <div class="field"><label>71. อื่นๆ</label><input type="text"></div>
-  </div>
-
-  <div class="section">
-    <h2>Scenario 1</h2>
-    <div class="field"><label>72. มูลค่าการลงทุน 1</label><input type="text"></div>
-    <div class="field"><label>73. ระยะเวลาการลงทุน 1</label><input type="text"></div>
-    <div class="field"><label>74. ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 1</label><input type="text"></div>
-    <div class="field"><label>75. NPV(Net Present Value)มูลค่าปัจจุบันสุทธิ 1</label><input type="text"></div>
-    <div class="field"><label>76. IRR( Internal Rate of Return)อัตราผลตอบแทนการลงทุนภายในของโครงการ 1</label><input type="text"></div>
-    <div class="field"><label>77. MIRR(Modify Internal Rate of Return)อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 1</label><input type="text"></div>
-    <div class="field"><label>78. DPB(Discount Payback Period)ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 1</label><input type="text"></div>
-  </div>
-
-  <div class="section">
-    <h2>Scenario 2</h2>
-    <div class="field"><label>79. มูลค่าการลงทุน 2</label><input type="text"></div>
-    <div class="field"><label>80. ระยะเวลาการลงทุน 2</label><input type="text"></div>
-    <div class="field"><label>81. ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 2</label><input type="text"></div>
-    <div class="field"><label>82. NPV(Net Present Value)มูลค่าปัจจุบันสุทธิ 2</label><input type="text"></div>
-    <div class="field"><label>83. IRR( Internal Rate of Return)อัตราผลตอบแทนการลงทุนภายในของโครงการ 2</label><input type="text"></div>
-    <div class="field"><label>84. MIRR(Modify Internal Rate of Return)อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 2</label><input type="text"></div>
-    <div class="field"><label>85. DPB(Discount Payback Period)ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 2</label><input type="text"></div>
-  </div>
-
-  <div class="section">
-    <h2>Scenario 3</h2>
-    <div class="field"><label>86. มูลค่าการลงทุน 3</label><input type="text"></div>
-    <div class="field"><label>87. ระยะเวลาการลงทุน 3</label><input type="text"></div>
-    <div class="field"><label>88. ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 3</label><input type="text"></div>
-    <div class="field"><label>89. NPV(Net Present Value)มูลค่าปัจจุบันสุทธิ 3</label><input type="text"></div>
-    <div class="field"><label>90. IRR( Internal Rate of Return)อัตราผลตอบแทนการลงทุนภายในของโครงการ 3</label><input type="text"></div>
-    <div class="field"><label>91. MIRR(Modify Internal Rate of Return)อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 3</label><input type="text"></div>
-    <div class="field"><label>92. DPB(Discount Payback Period)ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 3</label><input type="text"></div>
-  </div>
-<div class="section">
-                <div class="section-title">เลือก Scenario</div>
-                <label for="item1">No./item 1</label>
-                <select id="item1" name="item1">
-                    <option value="Scenario 1">Scenario 1</option>
-                    <option value="Scenario 2">Scenario 2</option>
-                    <option value="Scenario 3">Scenario 3</option>
-                    <option value="Note 1">Note 1</option>
-                </select>
-                
-                <label for="item2">No./item 2</label>
-                <select id="item2" name="item2">
-                    <option value="Scenario 1">Scenario 1</option>
-                    <option value="Scenario 2">Scenario 2</option>
-                    <option value="Scenario 3">Scenario 3</option>
-                    <option value="Note 2">Note 2</option>
-                </select>
-
-                <label for="item3">No./item 3</label>
-                <select id="item3" name="item3">
-                    <option value="Scenario 1">Scenario 1</option>
-                    <option value="Scenario 2">Scenario 2</option>
-                    <option value="Scenario 3">Scenario 3</option>
-                    <option value="Note 3">Note 3</option>
-                </select>
-
-                <label for="item4">No./item 4</label>
-                <select id="item4" name="item4">
-                    <option value="Scenario 1">Scenario 1</option>
-                    <option value="Scenario 2">Scenario 2</option>
-                    <option value="Scenario 3">Scenario 3</option>
-                    <option value="Note 4">Note 4</option>
-                </select>
-
-                <label for="item5">No./item 5</label>
-                <select id="item5" name="item5">
-                    <option value="Scenario 1">Scenario 1</option>
-                    <option value="Scenario 2">Scenario 2</option>
-                    <option value="Scenario 3">Scenario 3</option>
-                    <option value="Note 5">Note 5</option>
-                </select>
-
-                <label for="requirement">Requirement</label>
-                <input type="text" id="requirement" name="requirement" required>
-
-                <label for="thailand_i4">Thailand i4 index</label>
-                <input type="text" id="thailand_i4" name="thailand_i4" required>
-
-                <label for="constraints">Constraints</label>
-                <input type="text" id="constraints" name="constraints" required>
-            </div>
-
-            <!-- Result vs Objective -->
-            <div class="section">
-                <div class="section-title">Result vs Objective</div>
-                <label for="objective">Objective</label>
-                <input type="text" id="objective" name="objective" required>
-
-                <label for="description">Description</label>
-                <input type="text" id="description" name="description" required>
-
-                <label for="improve">Improve</label>
-                <input type="text" id="improve" name="improve" required>
-
-                <label for="result">Result</label>
-                <select id="result" name="result">
-                    <option value="pass">Pass</option>
-                    <option value="fail">Fail</option>
-                </select>
-            </div>
-
-            <!-- SI matching -->
-            <div class="section">
-                <div class="section-title">SI matching</div>
-                <label for="si1">บริษัท SI1 จำกัด ดำเนินธุรกิจ</label>
-                <input type="text" id="si1" name="si1" required>
-
-                <label for="si2">บริษัท SI2 จำกัด ดำเนินธุรกิจ</label>
-                <input type="text" id="si2" name="si2" required>
-
-                <label for="exim_bank">EXIM Bank</label>
-                <input type="text" id="exim_bank" name="exim_bank" required>
-
-                <label for="criteria">หลักเกณฑ์</label>
-                <input type="text" id="criteria" name="criteria" required>
-
-                <label for="other_criteria">หลักเกณฑ์ อื่นๆ</label>
-                <input type="text" id="other_criteria" name="other_criteria" required>
-            </div>
-
-            <!-- สรุปผลการให้คำปรึกษา -->
-            <div class="section">
-                <div class="section-title">สรุปผลการให้คำปรึกษาแนะนำสถานประกอบการในการปรับปรุงประสิทธิภาพการผลิต</div>
-                <label for="cost_reduction">ต้นทุนลดลง.....%</label>
-                <input type="text" id="cost_reduction" name="cost_reduction" required>
-
-                <label for="waste_reduction">ของเสียลดลง........%</label>
-                <input type="text" id="waste_reduction" name="waste_reduction" required>
-
-                <label for="productivity_increase">ผลิตภาพเพิ่มขึ้น.......%</label>
-                <input type="text" id="productivity_increase" name="productivity_increase" required>
-            </div>
-
-            <!-- รายชื่อผู้จัดทำรายงาน -->
-            <div class="section">
-                <div class="section-title">รายชื่อผู้จัดทำรายงานสรุปการศึกษาความเป็นไปได้ทางเทคโนโลยีและแผนการลงทุน</div>
-                <label for="team_lead">หัวหน้าทีม</label>
-                <input type="text" id="team_lead" name="team_lead" required>
-
-                <label for="member1">สมาชิก1</label>
-                <input type="text" id="member1" name="member1" required>
-
-                <label for="member2">สมาชิก2</label>
-                <input type="text" id="member2" name="member2" required>
-
-                <label for="member3">สมาชิก3</label>
-                <input type="text" id="member3" name="member3" required>
-
-                <label for="member4">สมาชิก4</label>
-                <input type="text" id="member4" name="member4" required>
-
-                <label for="member5">สมาชิก5</label>
-                <input type="text" id="member5" name="member5" required>
-
-                <label for="member6">สมาชิก6</label>
-                <input type="text" id="member6" name="member6" required>
-
-                <label for="mentor">Mentor</label>
-                <input type="text" id="mentor" name="mentor" required>
-
-                <label for="signatory">ผู้มีอำนาจลงนามของสถานประกอบการ</label>
-                <input type="text" id="signatory" name="signatory" required>
-
-                <label for="position">ตำแหน่ง</label>
-                <input type="text" id="position" name="position" required>
-
-                <label for="company">บริษัท</label>
-                <input type="text" id="company" name="company" required>
-
-                <label for="date">วันที่</label>
-                <input type="text" id="date" name="date" required>
-            </div>
- <input type="submit" value="Submit">   
-  </form>
-</body>
-</html>
+      </div>
+      
+      <!-- Result vs Objective -->
+      <div class="section">
+        <div class="section-title">Result vs Objective</div>
+        
+        <div class="row">
+          <div class="col">
+            <label for="Objective" class="required">Objective</label>
+            <textarea id="Objective" name="Objective" required></textarea>
+          </div>
+          <div class="col">
+            <label for="Description" class="required">Description</label>
+            <textarea id="Description" name="Description" required></textarea>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col">
+            <label for="Improve" class="required">Improve</label>
+            <textarea id="Improve" name="Improve" required></textarea>
+          </div>
+          <div class="col">
+            <label for="Result" class="required">Result</label>
+            <select id="Result" name="Result" required>
+              <option value="pass">Pass</option>
+              <option value="fail">Fail</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      
+      <!-- SI matching -->
+      <div class="section">
+        <div class="section-title">SI matching</div>
+        
+        <div class="row">
+          <div class="col">
+            <label for="บริษัท  SI1 จำกัด   ดำเนินธุรกิจ " class="required">บริษัท SI1 จำกัด ดำเนินธุรกิจ</label>
+            <textarea id="บริษัท  SI1 จำกัด   ดำเนินธุรกิจ " name="บริษัท  SI1 จำกัด   ดำเนินธุรกิจ " required></textarea>
+          </div>
+          <div class="col">
+            <label for="บริษัท  SI2 จำกัด   ดำเนินธุรกิจ  " class="required">บริษัท SI2 จำกัด ดำเนินธุรกิจ</label>
+            <textarea id="บริษัท  SI2 จำกัด   ดำเนินธุรกิจ  " name="บริษัท  SI2 จำกัด   ดำเนินธุรกิจ  " required></textarea>
+          </div>
+        </div>
+        
+        <div class="section">
+          <div class="section-title">EXIM Bank</div>
+        
+        <div class="row">
+          <div class="col">
+            <label for="หลักเกณฑ์" class="required">หลักเกณฑ์</label>
+            <textarea id="หลักเกณฑ์" name="หลักเกณฑ์" required></textarea>
+          </div>
+          <div class="col">
+            <label for="หลักเกณฑ์ อื่นๆ" class="required">หลักเกณฑ์ อื่นๆ</label>
+            <textarea id="หลักเกณฑ์ อื่นๆ" name="หลักเกณฑ์ อื่นๆ" required></textarea>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Summary Results -->
+      <div class="section">
+        <div class="section-title">สรุปผลการให้คำปรึกษาแนะนำสถานประกอบการในการปรับปรุงประสิทธิภาพการผลิต</div>
+        
+        <div class="row">
+          <div class="col">
+            <label for="ต้นทุนลดลง.....%" class="required">ต้นทุนลดลง (%)</label>
+            <input type="number" id="ต้นทุนลดลง.....%" name="ต้นทุนลดลง.....%" min="0" max="100" required>
+          </div>
+          <div class="col">
+            <label for="ของเสียลดลง........%" class="required">ของเสียลดลง........%</label>
+            <input type="number" id="ของเสียลดลง........%" name="ของเสียลดลง........%" min="0" max="100" required>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col">
+            <label for="ผลิตภาพเพิ่มขึ้น.......%" class="required">ผลิตภาพเพิ่มขึ้น.......%</label>
+            <input type="number" id="ผลิตภาพเพิ่มขึ้น.......%" name="ผลิตภาพเพิ่มขึ้น.......%" min="0" max="100" required>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Project Team Information -->
+      <div class="section">
+        <div class="section-title">รายชื่อผู้จัดทำรายงานสรุปการศึกษาความเป็นไปได้ทางเทคโนโลยีและแผนการลงทุน</div>
+        
+        <div class="row">
+          <div class="col">
+            <label for="หัวหน้าทีม" class="required">หัวหน้าทีม</label>
+            <input type="text" id="หัวหน้าทีม" name="หัวหน้าทีม" required>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col">
+            <label for="สมาชิก 1" class="required">สมาชิก 1</label>
+            <input type="text" id="สมาชิก 1" name="สมาชิก 1" required>
+          </div>
+          <div class="col">
+            <label for="สมาชิก 2" class="required">สมาชิก 2</label>
+            <input type="text" id="สมาชิก 2" name="สมาชิก 2" required>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col">
+            <label for="สมาชิก 3" class="required">สมาชิก 3</label>
+            <input type="text" id="สมาชิก 3" name="สมาชิก 3" required>
+          </div>
+          <div class="col">
+            <label for="สมาชิก 4" class="required">สมาชิก 4</label>
+            <input type="text" id="สมาชิก 4" name="สมาชิก 4" required>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col">
+            <label for="สมาชิก 5" class="required">สมาชิก 5</label>
+            <input type="text" id="สมาชิก 5" name="สมาชิก 5" required>
+          </div>
+          <div class="col">
+            <label for="สมาชิก 6" class="required">สมาชิก 6</label>
+            <input type="text" id="สมาชิก 6" name="สมาชิก 6" required>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col">
+            <label for="Mentor" class="required">Mentor</label>
+            <input type="text" id="Mentor" name="Mentor" required>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Company Signatory Information -->
+      <div class="section">
+        <div class="section-title">ข้อมูลผู้ลงนาม</div>
+        
+        <div class="row">
+          <div class="col">
+            <label for="ผู้มีอำนาจลงนามของสถานประกอบการ" class="required">ผู้มีอำนาจลงนามของสถานประกอบการ</label>
+            <input type="text" id="ผู้มีอำนาจลงนามของสถานประกอบการ" name="ผู้มีอำนาจลงนามของสถานประกอบการ" required>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col">
+            <label for="ตำแหน่ง" class="required">ตำแหน่ง</label>
+            <input type="text" id="ตำแหน่ง" name="ตำแหน่ง" required>
+          </div>
+          <div class="col">
+            <label for="บริษัท" class="required">บริษัท</label>
+            <input type="text" id="บริษัท" name="บริษัท" required>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col">
+            <label for="วันที่" class="required">วันที่</label>
+            <input type="วันที่" id="วันที่" name="วันที่" required>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Submit Button -->
+      <button type="submit" class="submit-btn">ส่งแบบฟอร์ม</button>
+    </form>
+    
+    <script>
+      // Add date picker with Thai locale if needed
+      document.addEventListener('DOMContentLoaded', function() {
+        // Form validation
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(event) {
+          // Basic validation can be added here
+          
+          // Example validation for percentage fields
+          const thaiShareholderInput = document.getElementById('thaiShareholder');
+          const foreignShareholderInput = document.getElementById('foreignShareholder');
+          
+          if (thaiShareholderInput.value && foreignShareholderInput.value) {
+            const thaiValue = parseFloat(thaiShareholderInput.value);
+            const foreignValue = parseFloat(foreignShareholderInput.value);
+            
+            if (thaiValue + foreignValue !== 100) {
+              alert('สัดส่วนผู้ถือหุ้นไทยและต่างชาติรวมกันต้องเท่ากับ 100%');
+              event.preventDefault();
+            }
+          }
+          
+          // Similar validation can be added for other percentage fields
+        });
+      });
+    </script>
+  </body>
+  </html>
