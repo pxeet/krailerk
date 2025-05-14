@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>รายงานสรุปการศึกษาความเป็นไปได้</title>
-  <link href="https://script.google.com/macros/s/AKfycbyWuX4syn5AJ5rLbQjpBL6cmBolUPF35ejTNxoUQohmbz4M0a41bfODk2fooGYGa5xRvw/exec" rel="stylesheet">
+
   <style>
     * {
       box-sizing: border-box;
@@ -151,7 +151,8 @@
 </head>
 <body>
   <h1>รายงานสรุปการศึกษาความเป็นไปได้</h1>
-  <form action="https://script.google.com/macros/s/AKfycbxZ-Jvc20CF7vjQzqFI_KNmkG7ibsMFWzAyxMR7F2OhkPiA2GENLxZvYKsioHlWH5SQ/exec" method="post">
+  <form id="uploadForm" enctype="multipart/form-data">
+<form id="uploadForm">
   
     <!-- ข้อมูลโครงการ -->
     <div class="section">
@@ -160,18 +161,18 @@
       <div class="row">
         <div class="col">
           <label for="เสนอ บริษัท " class="required">เสนอ บริษัท</label>
-          <input type="text" id="เสนอ บริษัท " name="เสนอ บริษัท " required>
+          <input type="text" id="เสนอ บริษัท " name="เสนอบริษัท" required>
         </div>
       </div>
       
       <div class="row">
         <div class="col">
           <label for="ระยะเวลา:เริ่มเรียน" class="required">ระยะเวลา: เริ่มเรียน</label>
-          <input type="date" id="ระยะเวลา:เริ่มเรียน" name="ระยะเวลา:เริ่มเรียน" required>
+          <input type="date" id="ระยะเวลา:เริ่มเรียน" name="ระยะเวลาเริ่มเรียน" required>
         </div>
         <div class="col">
           <label for="ระยะเวลา:สิ้นสุดการเรียน" class="required">ระยะเวลา: สิ้นสุดการเรียน</label>
-          <input type="date" id="ระยะเวลา:สิ้นสุดการเรียน" name="ระยะเวลา:สิ้นสุดการเรียน" required>
+          <input type="date" id="ระยะเวลา:สิ้นสุดการเรียน" name="ระยะเวลาสิ้นสุดการเรียน" required>
         </div>
       </div>
     </div>
@@ -184,11 +185,11 @@
       <div class="row">
         <div class="col">
           <label for="ชื่อ-สกุล ลำดับที่ 1" class="required">ชื่อ-สกุล ลำดับที่ 1</label>
-          <input type="text" id="ชื่อ-สกุล ลำดับที่ 1" name="ชื่อ-สกุล ลำดับที่ 1" required>
+          <input type="text" id="ชื่อ-สกุล ลำดับที่ 1" name="ชื่อสกุลลำดับที่1" required>
         </div>
         <div class="col">
           <label for="สถานะในโครงการ ลำดับที่ 1 " class="required">สถานะในโครงการ</label>
-          <select id="สถานะในโครงการ ลำดับที่ 1 " name="สถานะในโครงการ ลำดับที่ 1 " required>
+          <select id="สถานะในโครงการ ลำดับที่ 1 " name="สถานะในโครงการลำดับที่1 " required>
             <option value="หัวหน้า">หัวหน้า</option>
             <option value="สมาชิก">สมาชิก</option>
             <option value="Mentor">Mentor</option>
@@ -201,11 +202,11 @@
       <div class="row">
         <div class="col">
           <label for="ชื่อ-สกุล ลำดับที่ 2" class="required">ชื่อ-สกุล ลำดับที่ 2</label>
-          <input type="text" id="ชื่อ-สกุล ลำดับที่ 2" name="ชื่อ-สกุล ลำดับที่ 2" required>
+          <input type="text" id="ชื่อ-สกุล ลำดับที่ 2" name="ชื่อสกุลลำดับที่2" required>
         </div>
         <div class="col">
           <label for="สถานะในโครงการ ลำดับที่ 2" class="required">สถานะในโครงการ</label>
-          <select id="สถานะในโครงการ ลำดับที่ 2" name="สถานะในโครงการ ลำดับที่ 2" required>
+          <select id="สถานะในโครงการ ลำดับที่ 2" name="สถานะในโครงการลำดับที่2" required>
             <option value="หัวหน้า">หัวหน้า</option>
             <option value="สมาชิก">สมาชิก</option>
             <option value="Mentor">Mentor</option>
@@ -215,11 +216,11 @@
       <div class="row">
         <div class="col">
           <label for="ชื่อ-สกุล ลำดับที่ 3" class="required">ชื่อ-สกุล ลำดับที่ 3</label>
-          <input type="text" id="ชื่อ-สกุล ลำดับที่ 3" name="ชื่อ-สกุล ลำดับที่ 3" required>
+          <input type="text" id="ชื่อ-สกุล ลำดับที่ 3" name="ชื่อสกุลลำดับที่3" required>
         </div>
         <div class="col">
           <label for="สถานะในโครงการ ลำดับที่ 3" class="required">สถานะในโครงการ</label>
-          <select id="สถานะในโครงการ ลำดับที่ 3" name="สถานะในโครงการ ลำดับที่ 3" required>
+          <select id="สถานะในโครงการ ลำดับที่ 3" name="สถานะในโครงการลำดับที่3" required>
             <option value="หัวหน้า">หัวหน้า</option>
             <option value="สมาชิก">สมาชิก</option>
             <option value="Mentor">Mentor</option>
@@ -229,11 +230,11 @@
       <div class="row">
         <div class="col">
           <label for="ชื่อ-สกุล ลำดับที่ 4" class="required">ชื่อ-สกุล ลำดับที่ 4</label>
-          <input type="text" id="ชื่อ-สกุล ลำดับที่ 4" name="ชื่อ-สกุล ลำดับที่ 4" required>
+          <input type="text" id="ชื่อ-สกุล ลำดับที่ 4" name="ชื่อสกุลลำดับที่4" required>
         </div>
         <div class="col">
           <label for="สถานะในโครงการ ลำดับที่ 4" class="required">สถานะในโครงการ</label>
-          <select id="สถานะในโครงการ ลำดับที่ 4" name="สถานะในโครงการ ลำดับที่ 4" required>
+          <select id="สถานะในโครงการ ลำดับที่ 4" name="สถานะในโครงการลำดับที่4" required>
             <option value="หัวหน้า">หัวหน้า</option>
             <option value="สมาชิก">สมาชิก</option>
             <option value="Mentor">Mentor</option>
@@ -243,11 +244,11 @@
       <div class="row">
         <div class="col">
           <label for="ชื่อ-สกุล ลำดับที่ 5" class="required">ชื่อ-สกุล ลำดับที่ 5</label>
-          <input type="text" id="ชื่อ-สกุล ลำดับที่ 5" name="ชื่อ-สกุล ลำดับที่ 5" required>
+          <input type="text" id="ชื่อ-สกุล ลำดับที่ 5" name="ชื่อสกุลลำดับที่5" required>
         </div>
         <div class="col">
           <label for="สถานะในโครงการ ลำดับที่ 5" class="required">สถานะในโครงการ</label>
-          <select id="สถานะในโครงการ ลำดับที่ 5" name="สถานะในโครงการ ลำดับที่ 5" required>
+          <select id="สถานะในโครงการ ลำดับที่ 5" name="สถานะในโครงการลำดับที่5" required>
             <option value="หัวหน้า">หัวหน้า</option>
             <option value="สมาชิก">สมาชิก</option>
             <option value="Mentor">Mentor</option>
@@ -257,11 +258,11 @@
       <div class="row">
         <div class="col">
           <label for="ชื่อ-สกุล ลำดับที่ 6" class="required">ชื่อ-สกุล ลำดับที่ 6</label>
-          <input type="text" id="ชื่อ-สกุล ลำดับที่ 6" name="ชื่อ-สกุล ลำดับที่ 6" required>
+          <input type="text" id="ชื่อ-สกุล ลำดับที่ 6" name="ชื่อสกุลลำดับที่6" required>
         </div>
         <div class="col">
           <label for="สถานะในโครงการ ลำดับที่ 6" class="required">สถานะในโครงการ</label>
-          <select id="สถานะในโครงการ ลำดับที่ 6" name="สถานะในโครงการ ลำดับที่ 6" required>
+          <select id="สถานะในโครงการ ลำดับที่ 6" name="สถานะในโครงการลำดับที่6" required>
             <option value="หัวหน้า">หัวหน้า</option>
             <option value="สมาชิก">สมาชิก</option>
             <option value="Mentor">Mentor</option>
@@ -271,11 +272,11 @@
       <div class="row">
         <div class="col">
           <label for="ชื่อ-สกุล ลำดับที่ 7" class="required">ชื่อ-สกุล ลำดับที่ 7</label>
-          <input type="text" id="ชื่อ-สกุล ลำดับที่ 7" name="ชื่อ-สกุล ลำดับที่ 7" required>
+          <input type="text" id="ชื่อ-สกุล ลำดับที่ 7" name="ชื่อสกุลลำดับที่7" required>
         </div>
         <div class="col">
           <label for="สถานะในโครงการ ลำดับที่ 7" class="required">สถานะในโครงการ</label>
-          <select id="สถานะในโครงการ ลำดับที่ 7" name="สถานะในโครงการ ลำดับที่ 7" required>
+          <select id="สถานะในโครงการ ลำดับที่ 7" name="สถานะในโครงการลำดับที่7" required>
             <option value="หัวหน้า">หัวหน้า</option>
             <option value="สมาชิก">สมาชิก</option>
             <option value="Mentor">Mentor</option>
@@ -285,11 +286,11 @@
       <div class="row">
         <div class="col">
           <label for="ชื่อ-สกุล ลำดับที่ 8" class="required">ชื่อ-สกุล ลำดับที่ 8</label>
-          <input type="text" id="ชื่อ-สกุล ลำดับที่ 8" name="ชื่อ-สกุล ลำดับที่ 8" required>
+          <input type="text" id="ชื่อ-สกุล ลำดับที่ 8" name="ชื่อสกุลลำดับที่8" required>
         </div>
         <div class="col">
           <label for="สถานะในโครงการ ลำดับที่ 8" class="required">สถานะในโครงการ</label>
-          <select id="สถานะในโครงการ ลำดับที่ 8" name="สถานะในโครงการ ลำดับที่ 8" required>
+          <select id="สถานะในโครงการ ลำดับที่ 8" name="สถานะในโครงการลำดับที่8" required>
             <option value="หัวหน้า">หัวหน้า</option>
             <option value="สมาชิก">สมาชิก</option>
             <option value="Mentor">Mentor</option>
@@ -315,7 +316,7 @@
       <div class="row">
         <div class="col">
           <label for="ที่อยู่ " class="required">ที่อยู่</label>
-          <textarea id="ที่อยู่ " name="ที่อยู่ " required></textarea>
+          <textarea id="ที่อยู่ " name="ที่อยู่" required></textarea>
         </div>
       </div>
       
@@ -326,7 +327,7 @@
         </div>
         <div class="col">
           <label for="E-mail" class="required">E-mail</label>
-          <input type="email" id="E-mail" name="E-mail" required>
+          <input type="email" id="E-mail" name="Email" required>
         </div>
       </div>
       
@@ -334,18 +335,18 @@
       <div class="row">
         <div class="col">
           <label for="กรรมการผู้จัดการ (ชื่อ-สกุล)" class="required">กรรมการผู้จัดการ (ชื่อ-สกุล)</label>
-          <input type="text" id="กรรมการผู้จัดการ (ชื่อ-สกุล)" name="กรรมการผู้จัดการ (ชื่อ-สกุล)" required>
+          <input type="text" id="กรรมการผู้จัดการ (ชื่อ-สกุล)" name="กรรมการผู้จัดการชื่อสกุล" required>
         </div>
       </div>
       
       <div class="row">
         <div class="col">
           <label for="เบอร์มือถือ กรรมการผู้จัดการ" class="required">เบอร์มือถือ กรรมการผู้จัดการ</label>
-          <input type="tel" id="เบอร์มือถือ กรรมการผู้จัดการ" name="เบอร์มือถือ กรรมการผู้จัดการ" required>
+          <input type="tel" id="เบอร์มือถือ กรรมการผู้จัดการ" name="เบอร์มือถือกรรมการผู้จัดการ" required>
         </div>
         <div class="col">
           <label for="E-mail กรรมการผู้จัดการ" class="required">E-mail กรรมการผู้จัดการ</label>
-          <input type="email" id="E-mail กรรมการผู้จัดการ" name="E-mail กรรมการผู้จัดการ" required>
+          <input type="email" id="E-mail กรรมการผู้จัดการ" name="Emailกรรมการผู้จัดการ" required>
         </div>
       </div>
       
@@ -353,18 +354,18 @@
       <div class="row">
         <div class="col">
           <label for="ผู้ประสานงานหลัก (ชื่อ-สกุล)" class="required">ผู้ประสานงานหลัก (ชื่อ-สกุล)</label>
-          <input type="text" id="ผู้ประสานงานหลัก (ชื่อ-สกุล)" name="ผู้ประสานงานหลัก (ชื่อ-สกุล)" required>
+          <input type="text" id="ผู้ประสานงานหลัก (ชื่อ-สกุล)" name="ผู้ประสานงานหลักชื่อ-สกุล" required>
         </div>
       </div>
       
       <div class="row">
         <div class="col">
           <label for="เบอร์มือถือ ผู้ประสานงานหลัก" class="required">เบอร์มือถือ ผู้ประสานงานหลัก</label>
-          <input type="tel" id="เบอร์มือถือ ผู้ประสานงานหลัก" name="เบอร์มือถือ ผู้ประสานงานหลัก" required>
+          <input type="tel" id="เบอร์มือถือ ผู้ประสานงานหลัก" name="เบอร์มือถือผู้ประสานงานหลัก" required>
         </div>
         <div class="col">
           <label for="E-mail ผู้ประสานงานหลัก" class="required">E-mail ผู้ประสานงานหลัก</label>
-          <input type="email" id="E-mail ผู้ประสานงานหลัก" name="E-mail ผู้ประสานงานหลัก" required>
+          <input type="email" id="E-mail ผู้ประสานงานหลัก" name="Emailผู้ประสานงานหลัก" required>
         </div>
       </div>
     </div>
@@ -376,11 +377,11 @@
       <div class="row">
         <div class="col">
           <label for="ไทย.................. % ">ไทย (%)</label>
-          <input type="number" id="ไทย.................. % " name="ไทย.................. % " min="0" max="100">
+          <input type="number" id="ไทย.................. % " name="ไทยเปอ1" min="0" max="100">
         </div>
         <div class="col">
           <label for="ต่างชาติ................... %">ต่างชาติ (%)</label>
-          <input type="number" id="ต่างชาติ................... %" name="ต่างชาติ................... %" min="0" max="100">
+          <input type="number" id="ต่างชาติ................... %" name="ต่างชาติเปอ1" min="0" max="100">
         </div>
       </div>
     </div>
@@ -400,14 +401,14 @@
         </div>
         <div class="col">
           <label for="ก่อตั้งเมื่อ พ.ศ">ก่อตั้งเมื่อ พ.ศ</label>
-          <input type="number" id="ก่อตั้งเมื่อ พ.ศ" name="ก่อตั้งเมื่อ พ.ศ">
+          <input type="number" id="ก่อตั้งเมื่อ พ.ศ" name="ก่อตั้งเมื่อพ.ศ">
         </div>
       </div>
       
       <div class="row">
         <div class="col">
-          <label for="ทุนจดทะเบียน(บาท)">ทุนจดทะเบียน (บาท)</label>
-          <input type="number" id="ทุนจดทะเบียน(บาท)" name="ทุนจดทะเบียน(บาท)">
+          <label for="ทุนจดทะเบียนบาท">ทุนจดทะเบียน (บาท)</label>
+          <input type="number" id="ทุนจดทะเบียนบาท" name="ทุนจดทะเบียนบาท">
         </div>
         <div class="col">
           <label for="กิจการอยู่ในอุตสาหกรรม">กิจการอยู่ในอุตสาหกรรม</label>
@@ -417,8 +418,8 @@
       
       <div class="row">
         <div class="col">
-          <label for="พื้นที่โรงงาน (ไร่)">พื้นที่โรงงาน (ไร่)</label>
-          <input type="text" id="พื้นที่โรงงาน (ไร่)" name="พื้นที่โรงงาน (ไร่)">
+          <label for="พื้นที่โรงงานไร่">พื้นที่โรงงาน (ไร่)</label>
+          <input type="text" id="พื้นที่โรงงานไร่" name="พื้นที่โรงงานไร่">
         </div>
       </div>
       
@@ -428,16 +429,16 @@
           <label>รูปแบบกระบวนการผลิต (เลือกได้มากกว่า 1)</label>
           <div class="checkbox-group">
             <label class="checkbox-label">
-              <input type="checkbox" name="รูปแบบกระบวนการผลิต (เลือกได้มากกว่า 1)" value="Made to order"> Made to order
+              <input type="checkbox" name="รูปแบบกระบวนการผลิตเลือกได้มากกว่า1" value="Made to order"> Made to order
             </label>
             <label class="checkbox-label">
-              <input type="checkbox" name="รูปแบบกระบวนการผลิต (เลือกได้มากกว่า 1)" value="Made to stock"> Made to stock
+              <input type="checkbox" name="รูปแบบกระบวนการผลิตเลือกได้มากกว่า1" value="Made to stock"> Made to stock
             </label>
             <label class="checkbox-label">
-              <input type="checkbox" name="รูปแบบกระบวนการผลิต (เลือกได้มากกว่า 1)" value="Assembly to order"> Assembly to order
+              <input type="checkbox" name="รูปแบบกระบวนการผลิตเลือกได้มากกว่า1" value="Assembly to order"> Assembly to order
             </label>
             <label class="checkbox-label">
-              <input type="checkbox" name="รูปแบบกระบวนการผลิต (เลือกได้มากกว่า 1)" value="Engineering to order"> Engineering to order
+              <input type="checkbox" name="รูปแบบกระบวนการผลิตเลือกได้มากกว่า1" value="Engineering to order"> Engineering to order
             </label>
           </div>
         </div>
@@ -445,8 +446,8 @@
       
       <div class="row">
         <div class="col">
-          <label for="อื่นๆ โปรดระบุ">อื่นๆ โปรดระบุ</label>
-          <input type="text" id="อื่นๆ โปรดระบุ" name="อื่นๆ โปรดระบุ">
+          <label for="อื่นๆโปรดระบุ">อื่นๆ โปรดระบุ</label>
+          <input type="text" id="อื่นๆโปรดระบุ" name="อื่นๆโปรดระบุ">
         </div>
       </div>
       
@@ -456,16 +457,16 @@
           <label>ลักษณะผลิตภัณฑ์ (เลือกได้มากกว่า 1)</label>
           <div class="checkbox-group">
             <label class="checkbox-label">
-              <input type="checkbox" name="ลักษณะผลิตภัณฑ์ (เลือกได้มากกว่า 1)" value="ตราสินค้าของตนเอง"> ตราสินค้าของตนเอง
+              <input type="checkbox" name="ลักษณะผลิตภัณฑ์เลือกได้มากกว่า1" value="ตราสินค้าของตนเอง"> ตราสินค้าของตนเอง
             </label>
             <label class="checkbox-label">
-              <input type="checkbox" name="ลักษณะผลิตภัณฑ์ (เลือกได้มากกว่า 1)" value="Made to stock"> Made to stock
+              <input type="checkbox" name="ลักษณะผลิตภัณฑ์เลือกได้มากกว่า1" value="Made to stock"> Made to stock
             </label>
             <label class="checkbox-label">
-              <input type="checkbox" name="ลักษณะผลิตภัณฑ์ (เลือกได้มากกว่า 1)" value="OEM รับจ้างผลิตภัณฑ์"> OEM รับจ้างผลิตภัณฑ์
+              <input type="checkbox" name="ลักษณะผลิตภัณฑ์เลือกได้มากกว่า1" value="OEM รับจ้างผลิตภัณฑ์"> OEM รับจ้างผลิตภัณฑ์
             </label>
             <label class="checkbox-label">
-              <input type="checkbox" name="ลักษณะผลิตภัณฑ์ (เลือกได้มากกว่า 1)" value="ODM รับออกแบบผลิตภัณฑ์"> ODM รับออกแบบผลิตภัณฑ์
+              <input type="checkbox" name="ลักษณะผลิตภัณฑ์เลือกได้มากกว่า1" value="ODM รับออกแบบผลิตภัณฑ์"> ODM รับออกแบบผลิตภัณฑ์
             </label>
           </div>
         </div>
@@ -473,15 +474,15 @@
       
       <div class="row">
         <div class="col">
-          <label for="อื่นๆ โปรดระบุ 1">อื่นๆ โปรดระบุ</label>
-          <input type="text" id="อื่นๆ โปรดระบุ 1" name="อื่นๆ โปรดระบุ 1">
+          <label for="อื่นๆโปรดระบุ1">อื่นๆ โปรดระบุ</label>
+          <input type="text" id="อื่นๆโปรดระบุ1" name="อื่นๆโปรดระบุ1">
         </div>
       </div>
       
       <div class="row">
         <div class="col">
-          <label for="ผลิตภัณฑ์/สินค้าที่ผลิตหลัก">ผลิตภัณฑ์/สินค้าที่ผลิตหลัก</label>
-          <input type="text" id="ผลิตภัณฑ์/สินค้าที่ผลิตหลัก" name="ผลิตภัณฑ์/สินค้าที่ผลิตหลัก">
+          <label for="ผลิตภัณฑ์สินค้าที่ผลิตหลัก">ผลิตภัณฑ์/สินค้าที่ผลิตหลัก</label>
+          <input type="text" id="ผลิตภัณฑ์สินค้าที่ผลิตหลัก" name="ผลิตภัณฑ์สินค้าที่ผลิตหลัก">
         </div>
       </div>
     </div>
@@ -500,12 +501,12 @@
       
       <div class="row">
         <div class="col">
-          <label for="ในประเทศ(%)">ในประเทศ (%)</label>
-          <input type="number" id="ในประเทศ(%)" name="ในประเทศ(%)" min="0" max="100">
+          <label for="ในประเทศ2">ในประเทศ (%)</label>
+          <input type="number" id="ในประเทศ2" name="ในประเทศ2" min="0" max="100">
         </div>
         <div class="col">
-          <label for="ต่างประเเทศ(%)">ต่างประเทศ (%)</label>
-          <input type="number" id="ต่างประเเทศ(%)" name="ต่างประเเทศ(%)" min="0" max="100">
+          <label for="ต่างประเเทศ2">ต่างประเทศ (%)</label>
+          <input type="number" id="ต่างประเเทศ2" name="ต่างประเเทศ2" min="0" max="100">
         </div>
       </div>
     </div>
@@ -516,12 +517,12 @@
       
       <div class="row">
         <div class="col">
-          <label for="ตลาดในประเทศ (%)">ตลาดในประเทศ (%)</label>
-          <input type="number" id="ตลาดในประเทศ (%)" name="ตลาดในประเทศ (%)" min="0" max="100">
+          <label for="ตลาดในประเทศ3">ตลาดในประเทศ (%)</label>
+          <input type="number" id="ตลาดในประเทศ3" name="ตลาดในประเทศ3" min="0" max="100">
         </div>
         <div class="col">
-          <label for="ตลาดต่างประเทศ (%)">ตลาดต่างประเทศ (%)</label>
-          <input type="number" id="ตลาดต่างประเทศ (%)" name="ตลาดต่างประเทศ (%)" min="0" max="100">
+          <label for="ตลาดต่างประเทศ3">ตลาดต่างประเทศ (%)</label>
+          <input type="number" id="ตลาดต่างประเทศ3" name="ตลาดต่างประเทศ3" min="0" max="100">
         </div>
       </div>
     </div>
@@ -548,8 +549,8 @@
       
       <div class="row">
         <div class="col">
-          <label for="ระบบคุณภาพ (ISO, IATF)">ระบบคุณภาพ (ISO, IATF)</label>
-          <input type="text" id="ระบบคุณภาพ (ISO, IATF)" name="ระบบคุณภาพ (ISO, IATF)">
+          <label for="ระบบคุณภาพISO,IATF">ระบบคุณภาพ (ISO, IATF)</label>
+          <input type="text" id="ระบบคุณภาพISO,IATF" name="ระบบคุณภาพISO,IATF">
         </div>
       </div>
     </div>
@@ -560,12 +561,12 @@
       
       <div class="row">
         <div class="col">
-          <label for="ชื่อ-นามสกุล .">ชื่อ-นามสกุล</label>
-          <input type="text" id="ชื่อ-นามสกุล ." name="ชื่อ-นามสกุล .">
+          <label for="ชื่อนามสกุล2">ชื่อ-นามสกุล</label>
+          <input type="text" id="ชื่อนามสกุล2" name="ชื่อนามสกุล2">
         </div>
         <div class="col">
-          <label for=". ตำแหน่ง (เป็นผู้มีอำนาจการตัดสินใจ)">ตำแหน่ง (เป็นผู้มีอำนาจการตัดสินใจ)</label>
-          <input type="text" id=". ตำแหน่ง (เป็นผู้มีอำนาจการตัดสินใจ)" name=". ตำแหน่ง (เป็นผู้มีอำนาจการตัดสินใจ)">
+          <label for="ตำแหน่งเป็นผู้มีอำนาจการตัดสินใจ2">ตำแหน่ง (เป็นผู้มีอำนาจการตัดสินใจ)</label>
+          <input type="text" id="ตำแหน่งเป็นผู้มีอำนาจการตัดสินใจ2" name="ตำแหน่งเป็นผู้มีอำนาจการตัดสินใจ2">
         </div>
       </div>
     </div>
@@ -576,20 +577,20 @@
       
       <div class="row">
         <div class="col">
-          <label for="มุมมองของธุรกิจ ปัจจุบัน">ปัจจุบัน</label>
-          <textarea id="มุมมองของธุรกิจ ปัจจุบัน" name="มุมมองของธุรกิจ ปัจจุบัน"></textarea>
+          <label for="มุมมองของธุรกิจปัจจุบัน">ปัจจุบัน</label>
+          <textarea id="มุมมองของธุรกิจปัจจุบัน" name="มุมมองของธุรกิจปัจจุบัน"></textarea>
         </div>
       </div>
       
       <div class="section-title">อนาคต</div>
       <div class="row">
         <div class="col">
-          <label for="shortTerm">ระยะสั้น</label>
-          <textarea id="ระยะสั้น " name="ระยะสั้น "></textarea>
+          <label for="sun">ระยะสั้น</label>
+          <textarea id="sun" name="sun"></textarea>
         </div>
         <div class="col">
-          <label for="ระยะยาว ">ระยะยาว</label>
-          <textarea id="ระยะยาว " name="ระยะยาว "></textarea>
+          <label for="yoy">ระยะยาว</label>
+          <textarea id="yoy" name="yoy"></textarea>
         </div>
       </div>
       
@@ -602,23 +603,23 @@
       
       <div class="row">
         <div class="col">
-          <label for="Business Need">Business Need</label>
-          <textarea id="Business Need" name="Business Need"></textarea>
+          <label for="BusinessNeed">Business Need</label>
+          <textarea id="BusinessNeed" name="BusinessNeed"></textarea>
         </div>
         <div class="col">
-          <label for="Stakeholder Need">Stakeholder Need</label>
-          <textarea id="Stakeholder Need" name="Stakeholder Need"></textarea>
+          <label for="StakeholderNeed">Stakeholder Need</label>
+          <textarea id="StakeholderNeed" name="StakeholderNeed"></textarea>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <label for="System Need">System Need</label>
-          <textarea id="System Need" name="System Need"></textarea>
+          <label for="SystemNeed">System Need</label>
+          <textarea id="SystemNeed" name="SystemNeed"></textarea>
         </div>
       <div class="row">
         <div class="col">
-          <label for="ปัญหาที่พบ ">ปัญหาที่พบ</label>
-          <textarea id="ปัญหาที่พบ " name="ปัญหาที่พบ "></textarea>
+          <label for="ปัญหาที่พบ">ปัญหาที่พบ</label>
+          <textarea id="ปัญหาที่พบ" name="ปัญหาที่พบ"></textarea>
         </div>
         <div class="col">
           <label for="ท่านต้องการปรับปรุงกระบวนการใด">ท่านต้องการปรับปรุงกระบวนการใด</label>
@@ -633,12 +634,12 @@
       
       <div class="row">
         <div class="col">
-          <label for="ค่าระดับ Index ก่อนเริ่มโครงการ (As is)">ค่าระดับ Index ก่อนเริ่มโครงการ (As is)</label>
-          <input type="text" id="ค่าระดับ Index ก่อนเริ่มโครงการ (As is)" name="ค่าระดับ Index ก่อนเริ่มโครงการ (As is)">
+          <label for="ค่าระดับIndexก่อนเริ่มโครงการAsis">ค่าระดับ Index ก่อนเริ่มโครงการ (As is)</label>
+          <input type="text" id="ค่าระดับIndexก่อนเริ่มโครงการAsis" name="ค่าระดับIndexก่อนเริ่มโครงการAsis">
         </div>
         <div class="col">
-          <label for="ค่าระดับ Index ที่คาดหวังหลังดำเนินโครงการ (To be)">ค่าระดับ Index ที่คาดหวังหลังดำเนินโครงการ (To be)</label>
-          <input type="text" id="ค่าระดับ Index ที่คาดหวังหลังดำเนินโครงการ (To be)" name="ค่าระดับ Index ที่คาดหวังหลังดำเนินโครงการ (To be)">
+          <label for="ค่าระดับIndexที่คาดหวังหลังดำเนินโครงการTobe">ค่าระดับ Index ที่คาดหวังหลังดำเนินโครงการ (To be)</label>
+          <input type="text" id="ค่าระดับIndexที่คาดหวังหลังดำเนินโครงการTobe" name="ค่าระดับIndexที่คาดหวังหลังดำเนินโครงการTobe">
         </div>
       </div>
     </div>
@@ -649,30 +650,30 @@
       
       <div class="row">
         <div class="col">
-          <label for="Difficult  High">Difficult High</label>
-          <textarea id="Difficult  High" name="Difficult  High"></textarea>
+          <label for="DifficultHigh">Difficult High</label>
+          <textarea id="DifficultHigh" name="DifficultHigh"></textarea>
         </div>
         <div class="col">
-          <label for="Difficult  Low">Difficult Low</label>
-          <textarea id="Difficult  Low" name="Difficult  Low"></textarea>
-        </div>
-      </div>
-      
-      <div class="row">
-        <div class="col">
-          <label for="Easy  High">Easy High</label>
-          <textarea id="Easy  High" name="Easy  High"></textarea>
-        </div>
-        <div class="col">
-          <label for="Easy  Low">Easy Low</label>
-          <textarea id="Easy  Low" name="Easy  Low"></textarea>
+          <label for="DifficultLow">Difficult Low</label>
+          <textarea id="DifficultLow" name="DifficultLow"></textarea>
         </div>
       </div>
       
       <div class="row">
         <div class="col">
-          <label for="Constraints (ปัจจัยใดที่ทำให้ไม่เกิดการลงลงทุน)">Constraints (ปัจจัยใดที่ทำให้ไม่เกิดการลงลงทุน)</label>
-          <textarea id="Constraints (ปัจจัยใดที่ทำให้ไม่เกิดการลงลงทุน)" name="Constraints (ปัจจัยใดที่ทำให้ไม่เกิดการลงลงทุน)"></textarea>
+          <label for="EasyHigh">Easy High</label>
+          <textarea id="EasyHigh" name="EasyHigh"></textarea>
+        </div>
+        <div class="col">
+          <label for="EasyLow">Easy Low</label>
+          <textarea id="EasyLow" name="EasyLow"></textarea>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="Constraintsปัจจัยใดที่ทำให้ไม่เกิดการลงลงทุน">Constraints (ปัจจัยใดที่ทำให้ไม่เกิดการลงลงทุน)</label>
+          <textarea id="Constraintsปัจจัยใดที่ทำให้ไม่เกิดการลงลงทุน" name="Constraintsปัจจัยใดที่ทำให้ไม่เกิดการลงลงทุน"></textarea>
         </div>
       </div>
     </div>
@@ -683,23 +684,23 @@
       
       <div class="row">
         <div class="col">
-          <label for="เพิ่มผลผลิต ">เพิ่มผลผลิต</label>
-          <input type="text" id="เพิ่มผลผลิต " name="เพิ่มผลผลิต ">
+          <label for="เพิ่มผลผลิต">เพิ่มผลผลิต</label>
+          <input type="text" id="เพิ่มผลผลิต" name="เพิ่มผลผลิต">
         </div>
         <div class="col">
-          <label for="เพิ่มรายได้ ">เพิ่มรายได้</label>
-          <input type="text" id="เพิ่มรายได้ " name="เพิ่มรายได้ ">
+          <label for="เพิ่มรายได้">เพิ่มรายได้</label>
+          <input type="text" id="เพิ่มรายได้" name="เพิ่มรายได้">
         </div>
       </div>
       
       <div class="row">
         <div class="col">
-          <label for="ระยะเวลาคืนทุน ">ระยะเวลาคืนทุน</label>
-          <input type="text" id="ระยะเวลาคืนทุน " name="ระยะเวลาคืนทุน ">
+          <label for="KT">ระยะเวลาคืนทุน</label>
+          <input type="text" id="KT" name="KT">
         </div>
         <div class="col">
-          <label for="ระยะเวลาคืนทุน ">ระยะเวลาคืนทุน</label>
-          <input type="text" id="ระยะเวลาคืนทุน " name="ระยะเวลาคืนทุน ">
+          <label for="ระยะเวลาคืนทุน">ระยะเวลาคืนทุน</label>
+          <input type="text" id="ระยะเวลาคืนทุน" name="ระยะเวลาคืนทุน">
         </div>
       </div>
     </div>
@@ -716,41 +717,41 @@
       
       <div class="row">
         <div class="col">
-          <label for="มูลค่าการลงทุน 1">มูลค่าการลงทุน 1</label>
-          <input type="text" id="มูลค่าการลงทุน 1" name="มูลค่าการลงทุน 1">
+          <label for="มูลค่าการลงทุน1">มูลค่าการลงทุน 1</label>
+          <input type="text" id="มูลค่าการลงทุน1" name="มูลค่าการลงทุน1">
         </div>
         <div class="col">
-          <label for="ระยะเวลาการลงทุน 1">ระยะเวลาการลงทุน 1</label>
-          <input type="text" id="ระยะเวลาการลงทุน 1" name="ระยะเวลาการลงทุน 1">
-        </div>
-      </div>
-      
-      <div class="row">
-        <div class="col">
-          <label for="ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 1">ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 1</label>
-          <input type="text" id="ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 1" name="ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 1">
+          <label for="ระยะเวลาการลงทุน1">ระยะเวลาการลงทุน 1</label>
+          <input type="text" id="ระยะเวลาการลงทุน1" name="ระยะเวลาการลงทุน1">
         </div>
       </div>
       
       <div class="row">
         <div class="col">
-          <label for="NPV(Net Present Value)มูลค่าปัจจุบันสุทธิ 1 ">NPV (Net Present Value) มูลค่าปัจจุบันสุทธิ 1</label>
-          <input type="text" id="NPV(Net Present Value)มูลค่าปัจจุบันสุทธิ 1 " name="NPV(Net Present Value)มูลค่าปัจจุบันสุทธิ 1 ">
-        </div>
-        <div class="col">
-          <label for="IRR( Internal Rate of Return)อัตราผลตอบแทนการลงทุนภายในของโครงการ 1 ">IRR (Internal Rate of Return) อัตราผลตอบแทนการลงทุนภายในของโครงการ 1</label>
-          <input type="text" id="IRR( Internal Rate of Return)อัตราผลตอบแทนการลงทุนภายในของโครงการ 1 " name="IRR( Internal Rate of Return)อัตราผลตอบแทนการลงทุนภายในของโครงการ 1 ">
+          <label for="ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ1">ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 1</label>
+          <input type="text" id="ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ1" name="ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ1">
         </div>
       </div>
       
       <div class="row">
         <div class="col">
-          <label for="MIRR(Modify Internal Rate of Return)อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 1">MIRR (Modify Internal Rate of Return) อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 1</label>
-          <input type="text" id="MIRR(Modify Internal Rate of Return)อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 1" name="MIRR(Modify Internal Rate of Return)อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 1">
+          <label for="NPVNetPresentValueมูลค่าปัจจุบันสุทธิ1">NPV (Net Present Value) มูลค่าปัจจุบันสุทธิ 1</label>
+          <input type="text" id="NPVNetPresentValueมูลค่าปัจจุบันสุทธิ1" name="NPVNetPresentValueมูลค่าปัจจุบันสุทธิ1 ">
         </div>
         <div class="col">
-          <label for="DPB(Discount Payback Period)ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 1">DPB (Discount Payback Period) ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 1</label>
-          <input type="text" id="DPB(Discount Payback Period)ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 1" name="DPB(Discount Payback Period)ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 1">
+          <label for="IRRInternalRateofReturnอัตราผลตอบแทนการลงทุนภายในของโครงการ1">IRR (Internal Rate of Return) อัตราผลตอบแทนการลงทุนภายในของโครงการ 1</label>
+          <input type="text" id="IRRInternalRateofReturnอัตราผลตอบแทนการลงทุนภายในของโครงการ1" name="IRRInternalRateofReturnอัตราผลตอบแทนการลงทุนภายในของโครงการ1">
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="MIRRModifyInternalRateofReturnอัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว1">MIRR (Modify Internal Rate of Return) อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 1</label>
+          <input type="text" id="MIRRModifyInternalRateofReturnอัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว1" name="MIRRModifyInternalRateofReturnอัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว1">
+        </div>
+        <div class="col">
+          <label for="DPBDiscountPaybackPeriodระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน1">DPB (Discount Payback Period) ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 1</label>
+          <input type="text" id="DPBDiscountPaybackPeriodระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน1" name="DPBDiscountPaybackPeriodระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน1">
         </div>
       </div>
     </div>
@@ -759,41 +760,41 @@
       
       <div class="row">
         <div class="col">
-          <label for="มูลค่าการลงทุน 2">มูลค่าการลงทุน 2</label>
-          <input type="text" id="มูลค่าการลงทุน 2" name="มูลค่าการลงทุน 2">
+          <label for="มูลค่าการลงทุน2">มูลค่าการลงทุน 2</label>
+          <input type="text" id="มูลค่าการลงทุน2" name="มูลค่าการลงทุน2">
         </div>
         <div class="col">
-          <label for="ระยะเวลาการลงทุน 2">ระยะเวลาการลงทุน 2</label>
-          <input type="text" id="ระยะเวลาการลงทุน 2" name="ระยะเวลาการลงทุน 2">
-        </div>
-      </div>
-      
-      <div class="row">
-        <div class="col">
-          <label for="ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 2">ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 2</label>
-          <input type="text" id="ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 2" name="ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 2">
+          <label for="ระยะเวลาการลงทุน2">ระยะเวลาการลงทุน 2</label>
+          <input type="text" id="ระยะเวลาการลงทุน2" name="ระยะเวลาการลงทุน2">
         </div>
       </div>
       
       <div class="row">
         <div class="col">
-          <label for="NPV(Net Present Value)มูลค่าปัจจุบันสุทธิ 2">NPV (Net Present Value) มูลค่าปัจจุบันสุทธิ 2</label>
-          <input type="text" id="NPV(Net Present Value)มูลค่าปัจจุบันสุทธิ 2" name="NPV(Net Present Value)มูลค่าปัจจุบันสุทธิ 2">
-        </div>
-        <div class="col">
-          <label for="IRR( Internal Rate of Return)อัตราผลตอบแทนการลงทุนภายในของโครงการ 2">IRR (Internal Rate of Return) อัตราผลตอบแทนการลงทุนภายในของโครงการ 2</label>
-          <input type="text" id="IRR( Internal Rate of Return)อัตราผลตอบแทนการลงทุนภายในของโครงการ 2" name="IRR( Internal Rate of Return)อัตราผลตอบแทนการลงทุนภายในของโครงการ 2">
+          <label for="ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ2">ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 2</label>
+          <input type="text" id="ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ2" name="ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ2">
         </div>
       </div>
       
       <div class="row">
         <div class="col">
-          <label for="MIRR(Modify Internal Rate of Return)อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 2">MIRR (Modify Internal Rate of Return) อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 2</label>
-          <input type="text" id="MIRR(Modify Internal Rate of Return)อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 2" name="MIRR(Modify Internal Rate of Return)อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 2">
+          <label for="NPVNetPresentValueมูลค่าปัจจุบันสุทธิ2">NPV (Net Present Value) มูลค่าปัจจุบันสุทธิ 2</label>
+          <input type="text" id="NPVNetPresentValueมูลค่าปัจจุบันสุทธิ2" name="NPVNetPresentValueมูลค่าปัจจุบันสุทธิ2">
         </div>
         <div class="col">
-          <label for="DPB(Discount Payback Period)ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 2">DPB (Discount Payback Period) ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 2</label>
-          <input type="text" id="DPB(Discount Payback Period)ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 2" name="DPB(Discount Payback Period)ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 2">
+          <label for="IRRInternalRateofReturnอัตราผลตอบแทนการลงทุนภายในของโครงการ2">IRR (Internal Rate of Return) อัตราผลตอบแทนการลงทุนภายในของโครงการ 2</label>
+          <input type="text" id="IRRInternalRateofReturnอัตราผลตอบแทนการลงทุนภายในของโครงการ2" name="IRRInternalRateofReturnอัตราผลตอบแทนการลงทุนภายในของโครงการ2">
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="MIRRModifyInternalRateofReturnอัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว2">MIRR (Modify Internal Rate of Return) อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 2</label>
+          <input type="text" id="MIRRModifyInternalRateofReturnอัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว2" name="MIRRModifyInternalRateofReturnอัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว2">
+        </div>
+        <div class="col">
+          <label for="DPBDiscountPaybackPeriodระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน2">DPB (Discount Payback Period) ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 2</label>
+          <input type="text" id="DPBDiscountPaybackPeriodระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน2" name="DPBDiscountPaybackPeriodระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน2">
         </div>
       </div>
     </div>
@@ -802,41 +803,41 @@
       
       <div class="row">
         <div class="col">
-          <label for="มูลค่าการลงทุน 3">มูลค่าการลงทุน 3</label>
-          <input type="text" id="มูลค่าการลงทุน 3" name="มูลค่าการลงทุน 3">
+          <label for="มูลค่าการลงทุน3">มูลค่าการลงทุน 3</label>
+          <input type="text" id="มูลค่าการลงทุน3" name="มูลค่าการลงทุน3">
         </div>
         <div class="col">
-          <label for="ระยะเวลาการลงทุน 3">ระยะเวลาการลงทุน 3</label>
-          <input type="text" id="ระยะเวลาการลงทุน 3" name="ระยะเวลาการลงทุน 3">
-        </div>
-      </div>
-      
-      <div class="row">
-        <div class="col">
-          <label for="ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 3">ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 3</label>
-          <input type="text" id="ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 3" name="ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 3">
+          <label for="ระยะเวลาการลงทุน3">ระยะเวลาการลงทุน 3</label>
+          <input type="text" id="ระยะเวลาการลงทุน3" name="ระยะเวลาการลงทุน3">
         </div>
       </div>
       
       <div class="row">
         <div class="col">
-          <label for="NPV(Net Present Value)มูลค่าปัจจุบันสุทธิ 3">NPV (Net Present Value) มูลค่าปัจจุบันสุทธิ 3</label>
-          <input type="text" id="NPV(Net Present Value)มูลค่าปัจจุบันสุทธิ 3" name="NPV(Net Present Value)มูลค่าปัจจุบันสุทธิ 3">
-        </div>
-        <div class="col">
-          <label for="IRR( Internal Rate of Return)อัตราผลตอบแทนการลงทุนภายในของโครงการ 3">IRR (Internal Rate of Return) อัตราผลตอบแทนการลงทุนภายในของโครงการ 3</label>
-          <input type="text" id="IRR( Internal Rate of Return)อัตราผลตอบแทนการลงทุนภายในของโครงการ 3" name="IRR( Internal Rate of Return)อัตราผลตอบแทนการลงทุนภายในของโครงการ 3">
+          <label for="ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ3">ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 3</label>
+          <input type="text" id="ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ3" name="ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ3">
         </div>
       </div>
       
       <div class="row">
         <div class="col">
-          <label for="MIRR(Modify Internal Rate of Return)อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 3">MIRR (Modify Internal Rate of Return) อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 3</label>
-          <input type="text" id="MIRR(Modify Internal Rate of Return)อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 3" name="MIRR(Modify Internal Rate of Return)อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 3">
+          <label for="NPVNetPresentValueมูลค่าปัจจุบันสุทธิ3">NPV (Net Present Value) มูลค่าปัจจุบันสุทธิ 3</label>
+          <input type="text" id="NPVNetPresentValueมูลค่าปัจจุบันสุทธิ3" name="NPVNetPresentValueมูลค่าปัจจุบันสุทธิ3">
         </div>
         <div class="col">
-          <label for="DPB(Discount Payback Period)ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 3">DPB (Discount Payback Period) ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 3</label>
-          <input type="text" id="DPB(Discount Payback Period)ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 3" name="DPB(Discount Payback Period)ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 3">
+          <label for="IRRInternalRateofReturnอัตราผลตอบแทนการลงทุนภายในของโครงการ3">IRR (Internal Rate of Return) อัตราผลตอบแทนการลงทุนภายในของโครงการ 3</label>
+          <input type="text" id="IRRInternalRateofReturnอัตราผลตอบแทนการลงทุนภายในของโครงการ3" name="IRRInternalRateofReturnอัตราผลตอบแทนการลงทุนภายในของโครงการ3">
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="MIRRModifyInternalRateofReturnอัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว3">MIRR (Modify Internal Rate of Return) อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 3</label>
+          <input type="text" id="MIRRModifyInternalRateofReturnอัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว3" name="MIRRModifyInternalRateofReturnอัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว3">
+        </div>
+        <div class="col">
+          <label for="DPBDiscountPaybackPeriodระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน3">DPB (Discount Payback Period) ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 3</label>
+          <input type="text" id="DPBDiscountPaybackPeriodระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน3" name="DPBDiscountPaybackPeriodระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน3">
         </div>
       </div>
     </div>
@@ -849,8 +850,8 @@
       
       <div class="row">
         <div class="col">
-          <label for="No./item 1">No./item 1</label>
-          <select id="No./item 1" name="No./item 1">
+          <label for="Noitem1">No./item 1</label>
+          <select id="Noitem1" name="Noitem1">
             <option value="Scenario 1">Scenario 1</option>
             <option value="Scenario 2">Scenario 2</option>
             <option value="Scenario 3">Scenario 3</option>
@@ -859,12 +860,12 @@
         </div>
         <div class="row">
           <div class="col">
-            <label for="Note 1">Note 1</label>
-            <input type="text" id="Note 1" name="Note 1">
+            <label for="Note1">Note 1</label>
+            <input type="text" id="Note1" name="Note1">
           </div>
         <div class="col">
-          <label for="No./item 2">No./item 2</label>
-          <select id="No./item 2" name="No./item 2">
+          <label for="Noitem2">No./item 2</label>
+          <select id="Noitem2" name="Noitem2">
             <option value="Scenario 1">Scenario 1</option>
             <option value="Scenario 2">Scenario 2</option>
             <option value="Scenario 3">Scenario 3</option>
@@ -874,29 +875,26 @@
       </div>
       <div class="row">
         <div class="col">
-          <label for="Note 2">Note 2</label>
-          <input type="text" id="Note 2" name="Note 2">
+          <label for="Note2">Note 2</label>
+          <input type="text" id="Note2" name="Note2">
         </div>
       <div class="row">
         <div class="col">
-          <label for="No./item 3">No./item 3</label>
-          <select id="No./item 3" name="No./item 3">
-            <option value="Scenario
-            <select id="No./item 3" name="No./item 3">
-              <option value="Scenario 1">Scenario 1</option>
-              <option value="Scenario 2">Scenario 2</option>
-              <option value="Scenario 3">Scenario 3</option>
-            
+          <label for="Noitem3">No./item 3</label>
+          <select id="Noitem3" name="Noitem3">
+            <option value="Scenario 1">Scenario 1</option>
+            <option value="Scenario 2">Scenario 2</option>
+            <option value="Scenario 3">Scenario 3</option>
             </select>
           </div>
           <div class="row">
             <div class="col">
-              <label for="Note 3">Note 3</label>
-              <input type="text" id="Note 3" name="Note 3">
+              <label for="Note3">Note 3</label>
+              <input type="text" id="Note3" name="Note3">
             </div>
           <div class="col">
-            <label for="No./item 4">No./item 4</label>
-            <select id="No./item 4" name="No./item 4">
+            <label for="Noitem4">No./item 4</label>
+            <select id="Noitem4" name="Noitem4">
               <option value="Scenario 1">Scenario 1</option>
               <option value="Scenario 2">Scenario 2</option>
               <option value="Scenario 3">Scenario 3</option>
@@ -906,13 +904,13 @@
         </div>
         <div class="row">
           <div class="col">
-            <label for="Note 4">Note 4</label>
-            <input type="text" id="Note 4" name="Note 4">
+            <label for="Note4">Note 4</label>
+            <input type="text" id="Note4" name="Note4">
           </div>
         <div class="row">
           <div class="col">
-            <label for="No./item 5">No./item 5</label>
-            <select id="No./item 5" name="No./item 5">
+            <label for="Noitem5">No./item 5</label>
+            <select id="Noitem5" name="Noitem5">
               <option value="Scenario 1">Scenario 1</option>
               <option value="Scenario 2">Scenario 2</option>
               <option value="Scenario 3">Scenario 3</option>
@@ -922,8 +920,8 @@
         </div>
         <div class="row">
           <div class="col">
-            <label for="Note 5">Note 5</label>
-            <input type="text" id="Note 5" name="Note 5">
+            <label for="Note5">Note 5</label>
+            <input type="text" id="Note5" name="Note5">
           </div>
         <div class="row">
           <div class="col">
@@ -931,8 +929,8 @@
             <textarea id="Requirement" name="Requirement" required></textarea>
           </div>
           <div class="col">
-            <label for="Thailand i4 index" class="required">Thailand i4 index</label>
-            <input type="text" id="Thailand i4 index" name="Thailand i4 index" required>
+            <label for="Thailandi4index" class="required">Thailand i4 index</label>
+            <input type="text" id="Thailandi4index" name="Thailandi4index" required>
           </div>
         </div>
         
@@ -980,12 +978,12 @@
         
         <div class="row">
           <div class="col">
-            <label for="บริษัท  SI1 จำกัด   ดำเนินธุรกิจ " class="required">บริษัท SI1 จำกัด ดำเนินธุรกิจ</label>
-            <textarea id="บริษัท  SI1 จำกัด   ดำเนินธุรกิจ " name="บริษัท  SI1 จำกัด   ดำเนินธุรกิจ " required></textarea>
+            <label for="บริษัทSI1จำกัดดำเนินธุรกิจ " class="required">บริษัท SI1 จำกัด ดำเนินธุรกิจ</label>
+            <textarea id="บริษัทSI1จำกัดดำเนินธุรกิจ " name="บริษัทSI1จำกัดดำเนินธุรกิจ" required></textarea>
           </div>
           <div class="col">
-            <label for="บริษัท  SI2 จำกัด   ดำเนินธุรกิจ  " class="required">บริษัท SI2 จำกัด ดำเนินธุรกิจ</label>
-            <textarea id="บริษัท  SI2 จำกัด   ดำเนินธุรกิจ  " name="บริษัท  SI2 จำกัด   ดำเนินธุรกิจ  " required></textarea>
+            <label for="บริษัทSI2จำกัดดำเนินธุรกิจ  " class="required">บริษัท SI2 จำกัด ดำเนินธุรกิจ</label>
+            <textarea id="บริษัทSI2จำกัดดำเนินธุรกิจ  " name="บริษัทSI2จำกัดดำเนินธุรกิจ" required></textarea>
           </div>
         </div>
         
@@ -998,8 +996,8 @@
             <textarea id="หลักเกณฑ์" name="หลักเกณฑ์" required></textarea>
           </div>
           <div class="col">
-            <label for="หลักเกณฑ์ อื่นๆ" class="required">หลักเกณฑ์ อื่นๆ</label>
-            <textarea id="หลักเกณฑ์ อื่นๆ" name="หลักเกณฑ์ อื่นๆ" required></textarea>
+            <label for="หลักเกณฑ์อื่นๆ" class="required">หลักเกณฑ์ อื่นๆ</label>
+            <textarea id="หลักเกณฑ์อื่นๆ" name="หลักเกณฑ์อื่นๆ" required></textarea>
           </div>
         </div>
       </div>
@@ -1011,18 +1009,18 @@
         <div class="row">
           <div class="col">
             <label for="ต้นทุนลดลง.....%" class="required">ต้นทุนลดลง (%)</label>
-            <input type="number" id="ต้นทุนลดลง.....%" name="ต้นทุนลดลง.....%" min="0" max="100" required>
+            <input type="number" id="ต้นทุนลดลง.....%" name="ต้นทุนลดลง1" min="0" max="100" required>
           </div>
           <div class="col">
             <label for="ของเสียลดลง........%" class="required">ของเสียลดลง........%</label>
-            <input type="number" id="ของเสียลดลง........%" name="ของเสียลดลง........%" min="0" max="100" required>
+            <input type="number" id="ของเสียลดลง........%" name="ของเสียลดลง1" min="0" max="100" required>
           </div>
         </div>
         
         <div class="row">
           <div class="col">
             <label for="ผลิตภาพเพิ่มขึ้น.......%" class="required">ผลิตภาพเพิ่มขึ้น.......%</label>
-            <input type="number" id="ผลิตภาพเพิ่มขึ้น.......%" name="ผลิตภาพเพิ่มขึ้น.......%" min="0" max="100" required>
+            <input type="number" id="ผลิตภาพเพิ่มขึ้น.......%" name="ผลิตภาพเพิ่มขึ้น1" min="0" max="100" required>
           </div>
         </div>
       </div>
@@ -1040,34 +1038,34 @@
         
         <div class="row">
           <div class="col">
-            <label for="สมาชิก 1" class="required">สมาชิก 1</label>
-            <input type="text" id="สมาชิก 1" name="สมาชิก 1" required>
+            <label for="สมาชิก1" class="required">สมาชิก 1</label>
+            <input type="text" id="สมาชิก1" name="สมาชิก1" required>
           </div>
           <div class="col">
-            <label for="สมาชิก 2" class="required">สมาชิก 2</label>
-            <input type="text" id="สมาชิก 2" name="สมาชิก 2" required>
-          </div>
-        </div>
-        
-        <div class="row">
-          <div class="col">
-            <label for="สมาชิก 3" class="required">สมาชิก 3</label>
-            <input type="text" id="สมาชิก 3" name="สมาชิก 3" required>
-          </div>
-          <div class="col">
-            <label for="สมาชิก 4" class="required">สมาชิก 4</label>
-            <input type="text" id="สมาชิก 4" name="สมาชิก 4" required>
+            <label for="สมาชิก2" class="required">สมาชิก 2</label>
+            <input type="text" id="สมาชิก2" name="สมาชิก2" required>
           </div>
         </div>
         
         <div class="row">
           <div class="col">
-            <label for="สมาชิก 5" class="required">สมาชิก 5</label>
-            <input type="text" id="สมาชิก 5" name="สมาชิก 5" required>
+            <label for="สมาชิก3" class="required">สมาชิก 3</label>
+            <input type="text" id="สมาชิก3" name="สมาชิก3" required>
           </div>
           <div class="col">
-            <label for="สมาชิก 6" class="required">สมาชิก 6</label>
-            <input type="text" id="สมาชิก 6" name="สมาชิก 6" required>
+            <label for="สมาชิก4" class="required">สมาชิก 4</label>
+            <input type="text" id="สมาชิก4" name="สมาชิก4" required>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col">
+            <label for="สมาชิก5" class="required">สมาชิก 5</label>
+            <input type="text" id="สมาชิก5" name="สมาชิก5" required>
+          </div>
+          <div class="col">
+            <label for="สมาชิก6" class="required">สมาชิก 6</label>
+            <input type="text" id="สมาชิก6" name="สมาชิก6" required>
           </div>
         </div>
         
@@ -1108,36 +1106,51 @@
           </div>
         </div>
       </div>
-      
+        <div class="form-group">
+  <label for="fileUpload_1">รูปภาพที่ 1</label>
+  <input type="file" id="fileUpload_1" name="fileUpload_1" accept="image/*">
+
+  <label for="fileUpload_2">รูปภาพที่ 2</label>
+  <input type="file" id="fileUpload_2" name="fileUpload_2" accept="image/*">
+</div>
+
       <!-- Submit Button -->
       <button type="submit" class="submit-btn">ส่งแบบฟอร์ม</button>
     </form>
     
-    <script>
-      // Add date picker with Thai locale if needed
-      document.addEventListener('DOMContentLoaded', function() {
-        // Form validation
-        const form = document.querySelector('form');
-        form.addEventListener('submit', function(event) {
-          // Basic validation can be added here
-          
-          // Example validation for percentage fields
-          const thaiShareholderInput = document.getElementById('thaiShareholder');
-          const foreignShareholderInput = document.getElementById('foreignShareholder');
-          
-          if (thaiShareholderInput.value && foreignShareholderInput.value) {
-            const thaiValue = parseFloat(thaiShareholderInput.value);
-            const foreignValue = parseFloat(foreignShareholderInput.value);
-            
-            if (thaiValue + foreignValue !== 100) {
-              alert('สัดส่วนผู้ถือหุ้นไทยและต่างชาติรวมกันต้องเท่ากับ 100%');
-              event.preventDefault();
-            }
-          }
-          
-          // Similar validation can be added for other percentage fields
-        });
-      });
-    </script>
-  </body>
-  </html>
+<script>
+document.getElementById("uploadForm").addEventListener("submit", async function(event) {
+  event.preventDefault();
+  
+  const formData = new FormData(this);
+  const fileUploads = document.querySelectorAll('input[type="file"]');
+
+  for (let i = 0; i < fileUploads.length; i++) {
+    const file = fileUploads[i].files[0];
+    if (file) {
+      const base64 = await toBase64(file);
+      formData.set(`fileUpload_${i + 1}`, base64); // ใช้ formData.set() แทนการ append
+    }
+  }
+
+  const response = await fetch('https://script.google.com/macros/s/AKfycbzfUNsezdPxiK-UDpNwluGUG1jxHPhZdRDyHPGf6V2wumZBQlmddCykkPuFOz9cLuc/exec', {
+    method: 'POST',
+    body: formData
+  });
+
+  const result = await response.json();
+  alert(result.message);
+});
+
+// ฟังก์ชันแปลงไฟล์เป็น Base64 (พร้อม MIME type)
+function toBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result); // เก็บข้อมูลพร้อม MIME type
+    reader.onerror = error => reject(error);
+  });
+}
+</script>
+</body>
+</html>
