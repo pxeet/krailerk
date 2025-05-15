@@ -4,28 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>รายงานสรุปการศึกษาความเป็นไปได้</title>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-    }
     body {
       font-family: 'Prompt', sans-serif;
       background-color: #fdf6f0;
       margin: 0;
-      padding: 1rem;
-      color: #333;
+      padding: 20px;
       line-height: 1.6;
-    }
-    h1, h2, h3 {
       color: #333;
-      margin-top: 1.5rem;
     }
+
     h1 {
       text-align: center;
-      margin-bottom: 1.5rem;
       color: #553a24;
+      margin-bottom: 30px;
     }
+
     form {
       max-width: 1000px;
       margin: 0 auto 2rem;
@@ -34,6 +31,7 @@
       border-radius: 1rem;
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
+
     .section {
       background-color: #f9f1eb;
       border-radius: 0.5rem;
@@ -41,6 +39,7 @@
       margin-bottom: 2rem;
       border: 1px solid #e6d8d0;
     }
+
     .section-title {
       font-weight: 600;
       font-size: 1.2rem;
@@ -49,9 +48,11 @@
       border-bottom: 2px solid #e6b3a5;
       padding-bottom: 0.5rem;
     }
+
     .field {
       margin-bottom: 1rem;
     }
+
     label {
       display: block;
       margin-top: 0.8rem;
@@ -59,6 +60,12 @@
       font-weight: 500;
       color: #555;
     }
+
+    .required:after {
+      content: " *";
+      color: red;
+    }
+
     input, select, textarea {
       width: 100%;
       padding: 0.7rem;
@@ -69,41 +76,39 @@
       font-size: 0.95rem;
       transition: border-color 0.3s, box-shadow 0.3s;
     }
+
     input:focus, select:focus, textarea:focus {
       border-color: #e6b3a5;
       outline: none;
       box-shadow: 0 0 0 3px rgba(230, 179, 165, 0.2);
     }
+
     textarea {
       min-height: 100px;
       resize: vertical;
     }
-    .checkbox-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-top: 0.5rem;
+
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 1em;
+      padding-right: 2.5rem;
     }
-    .checkbox-label {
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-      font-weight: normal;
-      cursor: pointer;
-    }
-    .checkbox-label input[type="checkbox"] {
-      width: auto;
-    }
+
     .row {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
       margin-bottom: 1rem;
     }
+
     .col {
       flex: 1;
       min-width: 250px;
     }
+
     .submit-btn {
       background-color: #e6b3a5;
       color: white;
@@ -117,24 +122,36 @@
       margin: 2rem auto 0;
       transition: background-color 0.3s;
     }
+
     .submit-btn:hover {
       background-color: #d9a395;
     }
-    fieldset {
-      border: 1px solid #e6d8d0;
-      border-radius: 0.5rem;
-      padding: 1rem 1.5rem;
+
+    .team-members {
+      padding: 1rem 0;
+    }
+
+    .member-block {
+      background-color: #fff;
+      padding: 1rem;
       margin-bottom: 1.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
-    legend {
-      font-weight: 600;
-      color: #68462b;
-      padding: 0 0.5rem;
+
+    .member-block:last-child {
+      margin-bottom: 0;
     }
-    .required:after {
-      content: " *";
-      color: red;
+
+    .file-upload {
+      margin-top: 1rem;
     }
+
+    .file-upload label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
     /* Responsive adjustments */
     @media (max-width: 768px) {
       .row {
@@ -150,15 +167,13 @@
   </style>
 </head>
 <body>
-   <form id="uploadForm" enctype="multipart/form-data">
-  <h1>รายงานสรุปการศึกษาความเป็นไปได้</h1>
- 
+  <form id="uploadForm" enctype="multipart/form-data">
+    <h1>รายงานสรุปการศึกษาความเป็นไปได้</h1>
 
-  
     <!-- ข้อมูลโครงการ -->
     <div class="section">
       <div class="section-title">ข้อมูลโครงการ</div>
-    <div class="row">
+      <div class="row">
         <div class="col">
           <label for="company_name" class="required">เสนอ บริษัท</label>
           <input type="text" id="company_name" name="company_name" required>
@@ -180,164 +195,196 @@
     <!-- รายชื่อสมาชิกทีม -->
     <div class="section">
       <div class="section-title">รายชื่อสมาชิกทีม</div>
-      
-      <!-- Member 1 -->
-      <div class="row">
-        <div class="col">
-          <label for="member_name_1" class="required">ชื่อ-สกุล ลำดับที่ 1</label>
-          <input type="text" id="member_name_1" name="member_name_1" required>
+      <div class="team-members">
+        
+        <!-- Member 1 -->
+        <div class="member-block">
+          <div class="row">
+            <div class="col">
+              <label for="member_name_1" class="required">ชื่อ-สกุล ลำดับที่ 1</label>
+              <input type="text" id="member_name_1" name="member_name_1" required>
+            </div>
+            <div class="col">
+              <label for="member_status_1" class="required">สถานะในโครงการ</label>
+              <select id="member_status_1" name="member_status_1" required>
+                <option value="">-- เลือกสถานะ --</option>
+                <option value="หัวหน้า">หัวหน้า</option>
+                <option value="สมาชิก">สมาชิก</option>
+                <option value="Mentor">Mentor</option>
+              </select>
+            </div>
+            <div class="col">
+              <label for="tN1" class="required">ตำแหน่ง</label>
+              <input type="text" id="tN1" name="tN1" required>
+            </div>
+          </div>
         </div>
-        <div class="col">
-          <label for="member_status_1" class="required">สถานะในโครงการ</label>
-          <select id="member_status_1" name="member_status_1" required>
-            <option value="หัวหน้า">หัวหน้า</option>
-            <option value="สมาชิก">สมาชิก</option>
-            <option value="Mentor">Mentor</option>
-          </select>
+
+        <!-- Member 2 -->
+        <div class="member-block">
+          <div class="row">
+            <div class="col">
+              <label for="member_name_2" class="required">ชื่อ-สกุล ลำดับที่ 2</label>
+              <input type="text" id="member_name_2" name="member_name_2" required>
+            </div>
+            <div class="col">
+              <label for="member_status_2" class="required">สถานะในโครงการ</label>
+              <select id="member_status_2" name="member_status_2" required>
+                <option value="">-- เลือกสถานะ --</option>
+                <option value="หัวหน้า">หัวหน้า</option>
+                <option value="สมาชิก">สมาชิก</option>
+                <option value="Mentor">Mentor</option>
+              </select>
+            </div>
+            <div class="col">
+              <label for="tN2" class="required">ตำแหน่ง</label>
+              <input type="text" id="tN2" name="tN2" required>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <label for="tN1" class="required">ตำแหน่ง</label>
-          <input type="text" id="tN1" name="tN1" required>
+
+        <!-- Member 3 -->
+        <div class="member-block">
+          <div class="row">
+            <div class="col">
+              <label for="member_name_3" class="required">ชื่อ-สกุล ลำดับที่ 3</label>
+              <input type="text" id="member_name_3" name="member_name_3" required>
+            </div>
+            <div class="col">
+              <label for="member_status_3" class="required">สถานะในโครงการ</label>
+              <select id="member_status_3" name="member_status_3" required>
+                <option value="">-- เลือกสถานะ --</option>
+                <option value="หัวหน้า">หัวหน้า</option>
+                <option value="สมาชิก">สมาชิก</option>
+                <option value="Mentor">Mentor</option>
+              </select>
+            </div>
+            <div class="col">
+              <label for="tN3" class="required">ตำแหน่ง</label>
+              <input type="text" id="tN3" name="tN3" required>
+            </div>
+          </div>
         </div>
-      <!-- Member 2-8 -->
-      <div class="row">
-        <div class="col">
-          <label for="member_name_2" class="required">ชื่อ-สกุล ลำดับที่ 2</label>
-          <input type="text" id="member_name_2" name="member_name_2" required>
+
+        <!-- Member 4 -->
+        <div class="member-block">
+          <div class="row">
+            <div class="col">
+              <label for="member_name_4" class="required">ชื่อ-สกุล ลำดับที่ 4</label>
+              <input type="text" id="member_name_4" name="member_name_4" required>
+            </div>
+            <div class="col">
+              <label for="member_status_4" class="required">สถานะในโครงการ</label>
+              <select id="member_status_4" name="member_status_4" required>
+                <option value="">-- เลือกสถานะ --</option>
+                <option value="หัวหน้า">หัวหน้า</option>
+                <option value="สมาชิก">สมาชิก</option>
+                <option value="Mentor">Mentor</option>
+              </select>
+            </div>
+            <div class="col">
+              <label for="tN4" class="required">ตำแหน่ง</label>
+              <input type="text" id="tN4" name="tN4" required>
+            </div>
+          </div>
         </div>
-        <div class="col">
-          <label for="member_status_2" class="required">สถานะในโครงการ</label>
-          <select id="member_status_2" name="member_status_2" required>
-            <option value="หัวหน้า">หัวหน้า</option>
-            <option value="สมาชิก">สมาชิก</option>
-            <option value="Mentor">Mentor</option>
-          </select>
+
+        <!-- Member 5 -->
+        <div class="member-block">
+          <div class="row">
+            <div class="col">
+              <label for="member_name_5" class="required">ชื่อ-สกุล ลำดับที่ 5</label>
+              <input type="text" id="member_name_5" name="member_name_5" required>
+            </div>
+            <div class="col">
+              <label for="member_status_5" class="required">สถานะในโครงการ</label>
+              <select id="member_status_5" name="member_status_5" required>
+                <option value="">-- เลือกสถานะ --</option>
+                <option value="หัวหน้า">หัวหน้า</option>
+                <option value="สมาชิก">สมาชิก</option>
+                <option value="Mentor">Mentor</option>
+              </select>
+            </div>
+            <div class="col">
+              <label for="tN5" class="required">ตำแหน่ง</label>
+              <input type="text" id="tN5" name="tN5" required>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <label for="tN2" class="required">ตำแหน่ง</label>
-          <input type="text" id="tN2" name="tN2" required>
+
+        <!-- Member 6 -->
+        <div class="member-block">
+          <div class="row">
+            <div class="col">
+              <label for="member_name_6" class="required">ชื่อ-สกุล ลำดับที่ 6</label>
+              <input type="text" id="member_name_6" name="member_name_6" required>
+            </div>
+            <div class="col">
+              <label for="member_status_6" class="required">สถานะในโครงการ</label>
+              <select id="member_status_6" name="member_status_6" required>
+                <option value="">-- เลือกสถานะ --</option>
+                <option value="หัวหน้า">หัวหน้า</option>
+                <option value="สมาชิก">สมาชิก</option>
+                <option value="Mentor">Mentor</option>
+              </select>
+            </div>
+            <div class="col">
+              <label for="tN6" class="required">ตำแหน่ง</label>
+              <input type="text" id="tN6" name="tN6" required>
+            </div>
+          </div>
         </div>
-      <div class="row">
-        <div class="col">
-          <label for="member_name_3" class="required">ชื่อ-สกุล ลำดับที่ 3</label>
-          <input type="text" id="member_name_3" name="member_name_3" required>
+
+        <!-- Member 7 -->
+        <div class="member-block">
+          <div class="row">
+            <div class="col">
+              <label for="member_name_7" class="required">ชื่อ-สกุล ลำดับที่ 7</label>
+              <input type="text" id="member_name_7" name="member_name_7" required>
+            </div>
+            <div class="col">
+              <label for="member_status_7" class="required">สถานะในโครงการ</label>
+              <select id="member_status_7" name="member_status_7" required>
+                <option value="">-- เลือกสถานะ --</option>
+                <option value="หัวหน้า">หัวหน้า</option>
+                <option value="สมาชิก">สมาชิก</option>
+                <option value="Mentor">Mentor</option>
+              </select>
+            </div>
+            <div class="col">
+              <label for="tN7" class="required">ตำแหน่ง</label>
+              <input type="text" id="tN7" name="tN7" required>
+            </div>
+          </div>
         </div>
-        <div class="col">
-          <label for="member_status_3" class="required">สถานะในโครงการ</label>
-          <select id="member_status_3" name="member_status_3" required>
-            <option value="หัวหน้า">หัวหน้า</option>
-            <option value="สมาชิก">สมาชิก</option>
-            <option value="Mentor">Mentor</option>
-          </select>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <label for="tN3" class="required">ตำแหน่ง</label>
-          <input type="text" id="tN3" name="tN3" required>
-        </div>
-      <div class="row">
-        <div class="col">
-          <label for="member_name_4" class="required">ชื่อ-สกุล ลำดับที่ 4</label>
-          <input type="text" id="member_name_4" name="member_name_4" required>
-        </div>
-        <div class="col">
-          <label for="member_status_4" class="required">สถานะในโครงการ</label>
-          <select id="member_status_4" name="member_status_4" required>
-            <option value="หัวหน้า">หัวหน้า</option>
-            <option value="สมาชิก">สมาชิก</option>
-            <option value="Mentor">Mentor</option>
-          </select>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <label for="tN4" class="required">ตำแหน่ง</label>
-          <input type="text" id="tN4" name="tN4" required>
-        </div>
-      <div class="row">
-        <div class="col">
-          <label for="member_name_5" class="required">ชื่อ-สกุล ลำดับที่ 5</label>
-          <input type="text" id="member_name_5" name="member_name_5" required>
-        </div>
-        <div class="col">
-          <label for="member_status_5" class="required">สถานะในโครงการ</label>
-          <select id="member_status_5" name="member_status_5" required>
-            <option value="หัวหน้า">หัวหน้า</option>
-            <option value="สมาชิก">สมาชิก</option>
-            <option value="Mentor">Mentor</option>
-          </select>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <label for="tN1" class="required">ตำแหน่ง</label>
-          <input type="text" id="tN5" name="tN5" required>
-        </div>
-      <div class="row">
-        <div class="col">
-          <label for="member_name_6" class="required">ชื่อ-สกุล ลำดับที่ 6</label>
-          <input type="text" id="member_name_6" name="member_name_6" required>
-        </div>
-        <div class="col">
-          <label for="member_status_6" class="required">สถานะในโครงการ</label>
-          <select id="member_status_6" name="member_status_6" required>
-            <option value="หัวหน้า">หัวหน้า</option>
-            <option value="สมาชิก">สมาชิก</option>
-            <option value="Mentor">Mentor</option>
-          </select>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <label for="tN6" class="required">ตำแหน่ง</label>
-          <input type="text" id="tN6" name="tN6" required>
-        </div>
-      <div class="row">
-        <div class="col">
-          <label for="member_name_7" class="required">ชื่อ-สกุล ลำดับที่ 7</label>
-          <input type="text" id="member_name_7" name="member_name_7" required>
-        </div>
-        <div class="col">
-          <label for="member_status_7" class="required">สถานะในโครงการ</label>
-          <select id="member_status_7" name="member_status_7" required>
-            <option value="หัวหน้า">หัวหน้า</option>
-            <option value="สมาชิก">สมาชิก</option>
-            <option value="Mentor">Mentor</option>
-          </select>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <label for="tN7" class="required">ตำแหน่ง</label>
-          <input type="text" id="tN7" name="tN7" required>
-        </div>
-      <div class="row">
-        <div class="col">
-          <label for="member_name_8" class="required">ชื่อ-สกุล ลำดับที่ 8</label>
-          <input type="text" id="member_name_8" name="member_name_8" required>
-        </div>
-        <div class="col">
-          <label for="member_status_8" class="required">สถานะในโครงการ</label>
-          <select id="member_status_8" name="member_status_8" required>
-            <option value="หัวหน้า">หัวหน้า</option>
-            <option value="สมาชิก">สมาชิก</option>
-            <option value="Mentor">Mentor</option>
-          </select>
+
+        <!-- Member 8 -->
+        <div class="member-block">
+          <div class="row">
+            <div class="col">
+              <label for="member_name_8" class="required">ชื่อ-สกุล ลำดับที่ 8</label>
+              <input type="text" id="member_name_8" name="member_name_8" required>
+            </div>
+            <div class="col">
+              <label for="member_status_8" class="required">สถานะในโครงการ</label>
+              <select id="member_status_8" name="member_status_8" required>
+                <option value="">-- เลือกสถานะ --</option>
+                <option value="หัวหน้า">หัวหน้า</option>
+                <option value="สมาชิก">สมาชิก</option>
+                <option value="Mentor">Mentor</option>
+              </select>
+            </div>
+            <div class="col">
+              <label for="tN8" class="required">ตำแหน่ง</label>
+              <input type="text" id="tN8" name="tN8" required>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="row">
-        <div class="col">
-          <label for="tN8" class="required">ตำแหน่ง</label>
-          <input type="text" id="tN8" name="tN8" required>
-        </div>
+
     <!-- Company Profile -->
-   <div class="section">
+    <div class="section">
       <div class="section-title">Company Profile ข้อมูลเบื้องต้นของบริษัท</div>
       
       <div class="row">
@@ -346,12 +393,14 @@
           <input type="text" id="company_title" name="company_title" required>
         </div>
       </div>
+      
       <div class="row">
         <div class="col">
           <label for="tb" class="required">เลขทะเบียนนิติบุคคล</label>
           <textarea id="tb" name="tb" required></textarea>
         </div>
       </div>
+      
       <div class="row">
         <div class="col">
           <label for="address" class="required">ที่อยู่</label>
@@ -461,57 +510,6 @@
           <input type="text" id="factory_area" name="factory_area">
         </div>
       </div>
-      <div class="row">
-        <div class="col">
-          <label>รูปแบบกระบวนการผลิต (เลือกได้มากกว่า 1)</label>
-          <div class="checkbox-group">
-            <label class="checkbox-label">
-              <input type="checkbox" name="production_process_type" value="Made to order">Made to order
-            </label>
-            <label class="checkbox-label">
-              <input type="checkbox" name="production_process_type" value="Made to stock">Made to stock
-            </label>
-            <label class="checkbox-label">
-              <input type="checkbox" name="production_process_type" value="Assembly to order">Assembly to order
-            </label>
-            <label class="checkbox-label">
-              <input type="checkbox" name="production_process_type" value="Engineering to order">Engineering to order
-            </label>
-          </div>
-        </div>
-      </div>
-      
-      <div class="row">
-        <div class="col">
-          <label for="production_process_other">อื่นๆ โปรดระบุ</label>
-          <input type="text" id="production_process_other" name="production_process_other">
-        </div>
-      </div>
-      
-      <!-- Product Characteristics -->
-      <div class="row">
-        <div class="col">
-          <label>ลักษณะผลิตภัณฑ์ (เลือกได้มากกว่า 1)</label>
-          <div class="checkbox-group">
-            <label class="checkbox-label">
-              <input type="checkbox" name="product_characteristics" value="ตราสินค้าของตนเอง">ตราสินค้าของตนเอง
-            </label>
-            <label class="checkbox-label">
-              <input type="checkbox" name="product_characteristics" value="OEM รับจ้างผลิตภัณฑ์">OEM รับจ้างผลิตภัณฑ์
-            </label>
-            <label class="checkbox-label">
-              <input type="checkbox" name="product_characteristics" value="ODM รับออกแบบผลิตภัณฑ์">ODM รับออกแบบผลิตภัณฑ์
-            </label>
-          </div>
-        </div>
-      </div>
-      
-      <div class="row">
-        <div class="col">
-          <label for="product_characteristics_other">อื่นๆ โปรดระบุ</label>
-          <input type="text" id="product_characteristics_other" name="product_characteristics_other">
-        </div>
-      </div>
       
       <div class="row">
         <div class="col">
@@ -519,10 +517,10 @@
           <input type="text" id="main_products" name="main_products">
         </div>
       </div>
-    </div>
-
-        <div class="section">
-       <label for="main_raw_materials">วัตถุดิบหลัก</label>
+      
+      <div class="row">
+        <div class="col">
+          <label for="main_raw_materials">วัตถุดิบหลัก</label>
           <input type="text" id="main_raw_materials" name="main_raw_materials">
         </div>
       </div>
@@ -644,11 +642,14 @@
           <textarea id="stakeholder_need" name="stakeholder_need"></textarea>
         </div>
       </div>
+      
       <div class="row">
         <div class="col">
           <label for="system_need">System Need</label>
           <textarea id="system_need" name="system_need"></textarea>
         </div>
+      </div>
+      
       <div class="row">
         <div class="col">
           <label for="problems_found">ปัญหาที่พบ</label>
@@ -660,8 +661,9 @@
         </div>
       </div>
     </div>
-      <!-- Production Process -->
-      <div class="section">
+    
+    <!-- Thailand i4.0 Index -->
+    <div class="section">
       <div class="section-title">ค่าระดับ Thailand i4.0 Index</div>
       
       <div class="row">
@@ -680,27 +682,6 @@
     <div class="section">
       <div class="section-title">Requirement and Constraints Summary</div>
       
-      <div class="row">
-        <div class="col">
-          <label for="difficultHigh">Difficult High</label>
-          <textarea id="difficultHigh" name="difficultHigh"></textarea>
-        </div>
-        <div class="col">
-          <label for="difficultLow">Difficult Low</label>
-          <textarea id="difficultLow" name="difficultLow"></textarea>
-        </div>
-      </div>
-      
-      <div class="row">
-        <div class="col">
-          <label for="easyHigh">Easy High</label>
-          <textarea id="easyHigh" name="easyHigh"></textarea>
-        </div>
-        <div class="col">
-          <label for="easyLow">Easy Low</label>
-          <textarea id="easyLow" name="easyLow"></textarea>
-        </div>
-      </div>
       
       <div class="row">
         <div class="col">
@@ -727,7 +708,7 @@
       
       <div class="row">
         <div class="col">
-          <label for="returnOnInvestment">ระยะเวลาคืนทุน</label>
+          <label for="returnOnInvestment">อัตราผลตอบแทนจากการลงทุน</label>
           <input type="text" id="returnOnInvestment" name="returnOnInvestment">
         </div>
         <div class="col">
@@ -735,7 +716,8 @@
           <input type="text" id="paybackPeriod" name="paybackPeriod">
         </div>
       </div>
-    </div>
+      
+      <div class="row">
         <div class="col">
           <label for="others">อื่นๆ</label>
           <input type="text" id="others" name="others">
@@ -743,446 +725,459 @@
       </div>
     </div>
     
-    <!-- Scenarios -->
-    <div class="section">
-      <div class="section-title">Scenario 1</div>
-      
-      <div class="row">
-        <div class="col">
-          <label for="investmentValue1">มูลค่าการลงทุน 1</label>
-          <input type="text" id="investmentValue1" name="investmentValue1">
-        </div>
-        <div class="col">
-          <label for="investmentPeriod1">ระยะเวลาการลงทุน 1</label>
-          <input type="text" id="investmentPeriod1" name="investmentPeriod1">
-        </div>
+    <!-- Scenario Sections -->
+<style>
+  .scenario-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .scenario-box {
+    flex: 1;
+    min-width: 300px;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    border-top: 4px solid #e6b3a5;
+  }
+  
+  .scenario-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .scenario-title {
+    font-weight: 600;
+    color: #68462b;
+    font-size: 1.1rem;
+  }
+  
+  .scenario-number {
+    background-color: #e6b3a5;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+  }
+  
+  .scenario-row {
+    margin-bottom: 0.8rem;
+  }
+  
+  .scenario-row label {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.2rem;
+    display: block;
+  }
+  
+  .scenario-row input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 0.3rem;
+    font-family: 'Prompt', sans-serif;
+  }
+  
+  .scenario-group {
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 0.3rem;
+    margin-top: 1rem;
+  }
+</style>
+
+<div class="section">
+  <div class="section-title">Scenario Analysis</div>
+  
+  <div class="scenario-container">
+    <!-- Scenario 1 -->
+    <div class="scenario-box">
+      <div class="scenario-header">
+        <div class="scenario-title">Scenario 1</div>
+        <div class="scenario-number">1</div>
       </div>
       
-      <div class="row">
-        <div class="col">
-          <label for="minimumReturnRate1">ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 1</label>
+      <div class="scenario-row">
+        <label for="investmentValue1">มูลค่าการลงทุน</label>
+        <input type="text" id="investmentValue1" name="investmentValue1" placeholder="ระบุจำนวนเงิน">
+      </div>
+      
+      <div class="scenario-row">
+        <label for="investmentPeriod1">ระยะเวลาการลงทุน</label>
+        <input type="text" id="investmentPeriod1" name="investmentPeriod1" placeholder="ระบุระยะเวลา">
+      </div>
+      
+      <div class="scenario-group">
+        <div class="scenario-row">
+          <label for="minimumReturnRate1">อัตราผลตอบแทนขั้นต่ำ</label>
           <input type="text" id="minimumReturnRate1" name="minimumReturnRate1">
         </div>
-      </div>
-      
-      <div class="row">
-        <div class="col">
-          <label for="npv1">NPV (Net Present Value) มูลค่าปัจจุบันสุทธิ 1</label>
+        
+        <div class="scenario-row">
+          <label for="npv1">NPV (มูลค่าปัจจุบันสุทธิ)</label>
           <input type="text" id="npv1" name="npv1">
         </div>
-        <div class="col">
-          <label for="irr1">IRR (Internal Rate of Return) อัตราผลตอบแทนการลงทุนภายในของโครงการ 1</label>
+        
+        <div class="scenario-row">
+          <label for="irr1">IRR (อัตราผลตอบแทนภายใน)</label>
           <input type="text" id="irr1" name="irr1">
         </div>
-      </div>
-      
-      <div class="row">
-        <div class="col">
-          <label for="mirr1">MIRR (Modify Internal Rate of Return) อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 1</label>
+        
+        <div class="scenario-row">
+          <label for="mirr1">MIRR (อัตราผลตอบแทนปรับค่า)</label>
           <input type="text" id="mirr1" name="mirr1">
         </div>
-        <div class="col">
-          <label for="dpb1">DPB (Discount Payback Period) ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 1</label>
+        
+        <div class="scenario-row">
+          <label for="dpb1">DPB (ระยะเวลาคืนทุน)</label>
           <input type="text" id="dpb1" name="dpb1">
         </div>
       </div>
     </div>
-    <div class="section">
-      <div class="section-title">Scenario 2</div>
-      
-      <div class="row">
-        <div class="col">
-          <label for="investmentValue2">มูลค่าการลงทุน 2</label>
-          <input type="text" id="investmentValue2" name="investmentValue2">
-        </div>
-        <div class="col">
-          <label for="investmentPeriod2">ระยะเวลาการลงทุน 2</label>
-          <input type="text" id="investmentPeriod2" name="investmentPeriod2">
-        </div>
+    
+    <!-- Scenario 2 -->
+    <div class="scenario-box">
+      <div class="scenario-header">
+        <div class="scenario-title">Scenario 2</div>
+        <div class="scenario-number">2</div>
       </div>
       
-      <div class="row">
-        <div class="col">
-          <label for="minimumReturnRate2">ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 2</label>
+      <div class="scenario-row">
+        <label for="investmentValue2">มูลค่าการลงทุน</label>
+        <input type="text" id="investmentValue2" name="investmentValue2" placeholder="ระบุจำนวนเงิน">
+      </div>
+      
+      <div class="scenario-row">
+        <label for="investmentPeriod2">ระยะเวลาการลงทุน</label>
+        <input type="text" id="investmentPeriod2" name="investmentPeriod2" placeholder="ระบุระยะเวลา">
+      </div>
+      
+      <div class="scenario-group">
+        <div class="scenario-row">
+          <label for="minimumReturnRate2">อัตราผลตอบแทนขั้นต่ำ</label>
           <input type="text" id="minimumReturnRate2" name="minimumReturnRate2">
         </div>
-      </div>
-      
-      <div class="row">
-        <div class="col">
-          <label for="npv2">NPV (Net Present Value) มูลค่าปัจจุบันสุทธิ 2</label>
+        
+        <div class="scenario-row">
+          <label for="npv2">NPV (มูลค่าปัจจุบันสุทธิ)</label>
           <input type="text" id="npv2" name="npv2">
         </div>
-        <div class="col">
-          <label for="irr2">IRR (Internal Rate of Return) อัตราผลตอบแทนการลงทุนภายในของโครงการ 2</label>
+        
+        <div class="scenario-row">
+          <label for="irr2">IRR (อัตราผลตอบแทนภายใน)</label>
           <input type="text" id="irr2" name="irr2">
         </div>
-      </div>
-      
-      <div class="row">
-        <div class="col">
-          <label for="mirr2">MIRR (Modify Internal Rate of Return) อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 2</label>
+        
+        <div class="scenario-row">
+          <label for="mirr2">MIRR (อัตราผลตอบแทนปรับค่า)</label>
           <input type="text" id="mirr2" name="mirr2">
         </div>
-        <div class="col">
-          <label for="dpb2">DPB (Discount Payback Period) ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 2</label>
+        
+        <div class="scenario-row">
+          <label for="dpb2">DPB (ระยะเวลาคืนทุน)</label>
           <input type="text" id="dpb2" name="dpb2">
         </div>
       </div>
     </div>
-    <div class="section">
-      <div class="section-title">Scenario 3</div>
-      
-      <div class="row">
-        <div class="col">
-          <label for="investmentValue3">มูลค่าการลงทุน 3</label>
-          <input type="text" id="investmentValue3" name="investmentValue3">
-        </div>
-        <div class="col">
-          <label for="investmentPeriod3">ระยะเวลาการลงทุน 3</label>
-          <input type="text" id="investmentPeriod3" name="investmentPeriod3">
-        </div>
+    
+    <!-- Scenario 3 -->
+    <div class="scenario-box">
+      <div class="scenario-header">
+        <div class="scenario-title">Scenario 3</div>
+        <div class="scenario-number">3</div>
       </div>
       
-      <div class="row">
-        <div class="col">
-          <label for="minimumReturnRate3">ต้นทุนของเงินหรืออัตราผลตอบแทนขั้นต่ำที่ต้องการได้รับ 3</label>
+      <div class="scenario-row">
+        <label for="investmentValue3">มูลค่าการลงทุน</label>
+        <input type="text" id="investmentValue3" name="investmentValue3" placeholder="ระบุจำนวนเงิน">
+      </div>
+      
+      <div class="scenario-row">
+        <label for="investmentPeriod3">ระยะเวลาการลงทุน</label>
+        <input type="text" id="investmentPeriod3" name="investmentPeriod3" placeholder="ระบุระยะเวลา">
+      </div>
+      
+      <div class="scenario-group">
+        <div class="scenario-row">
+          <label for="minimumReturnRate3">อัตราผลตอบแทนขั้นต่ำ</label>
           <input type="text" id="minimumReturnRate3" name="minimumReturnRate3">
         </div>
-      </div>
-      
-      <div class="row">
-        <div class="col">
-          <label for="npv3">NPV (Net Present Value) มูลค่าปัจจุบันสุทธิ 3</label>
+        
+        <div class="scenario-row">
+          <label for="npv3">NPV (มูลค่าปัจจุบันสุทธิ)</label>
           <input type="text" id="npv3" name="npv3">
         </div>
-        <div class="col">
-          <label for="irr3">IRR (Internal Rate of Return) อัตราผลตอบแทนการลงทุนภายในของโครงการ 3</label>
+        
+        <div class="scenario-row">
+          <label for="irr3">IRR (อัตราผลตอบแทนภายใน)</label>
           <input type="text" id="irr3" name="irr3">
         </div>
-      </div>
-      
-      <div class="row">
-        <div class="col">
-          <label for="mirr3">MIRR (Modify Internal Rate of Return) อัตราผลตอบแทนการลงทุนที่ปรับค่าแล้ว 3</label>
+        
+        <div class="scenario-row">
+          <label for="mirr3">MIRR (อัตราผลตอบแทนปรับค่า)</label>
           <input type="text" id="mirr3" name="mirr3">
         </div>
-        <div class="col">
-          <label for="dpb3">DPB (Discount Payback Period) ระยะเวลาคืนทุนที่คำนึงถึงมูลค่าปัจจุบัน 3</label>
+        
+        <div class="scenario-row">
+          <label for="dpb3">DPB (ระยะเวลาคืนทุน)</label>
           <input type="text" id="dpb3" name="dpb3">
         </div>
       </div>
     </div>
+  </div>
+</div>
     
-    <!-- Additional scenarios (2-3) would follow the same pattern -->
-    
-    <!-- Scenario Selection -->
+    <!-- Requirements and Thailand i4 Index -->
     <div class="section">
-      <div class="section-title">เลือก Scenario</div>
+      <div class="section-title">Requirements and Thailand i4 Index</div>
       
       <div class="row">
         <div class="col">
-          <label for="noItem1">No./item 1</label>
-          <select id="noItem1" name="noItem1">
-            <option value="Scenario 1">Scenario 1</option>
-            <option value="Scenario 2">Scenario 2</option>
-            <option value="Scenario 3">Scenario 3</option>
-          
-          </select>
+          <label for="requirement" class="required">Requirement</label>
+          <textarea id="requirement" name="requirement" required></textarea>
         </div>
-        <div class="row">
-          <div class="col">
-            <label for="note1">Note 1</label>
-            <input type="text" id="note1" name="note1">
-          </div>
         <div class="col">
-          <label for="noItem2">No./item 2</label>
-          <select id="noItem2" name="noItem2">
-            <option value="Scenario 1">Scenario 1</option>
-            <option value="Scenario 2">Scenario 2</option>
-            <option value="Scenario 3">Scenario 3</option>
-            
-          </select>
+          <label for="thailandI4Index" class="required">Thailand i4 index</label>
+          <input type="text" id="thailandI4Index" name="thailandI4Index" required>
         </div>
       </div>
+      
       <div class="row">
         <div class="col">
-          <label for="note2">Note 2</label>
-          <input type="text" id="note2" name="note2">
-        </div>
-      <div class="row">
-        <div class="col">
-          <label for="noItem3">No./item 3</label>
-          <select id="noItem3" name="noItem3">
-            <option value="Scenario 1">Scenario 1</option>
-            <option value="Scenario 2">Scenario 2</option>
-            <option value="Scenario 3">Scenario 3</option>
-            </select>
-          </div>
-          <div class="row">
-            <div class="col">
-              <label for="note3">Note 3</label>
-              <input type="text" id="note3" name="note3">
-            </div>
-          <div class="col">
-            <label for="noItem4">No./item 4</label>
-            <select id="noItem4" name="noItem4">
-              <option value="Scenario 1">Scenario 1</option>
-              <option value="Scenario 2">Scenario 2</option>
-              <option value="Scenario 3">Scenario 3</option>
-            </select>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <label for="note4">Note 4</label>
-            <input type="text" id="note4" name="note4">
-          </div>
-        <div class="row">
-          <div class="col">
-            <label for="noItem5">No./item 5</label>
-            <select id="noItem5" name="noItem5">
-              <option value="Scenario 1">Scenario 1</option>
-              <option value="Scenario 2">Scenario 2</option>
-              <option value="Scenario 3">Scenario 3</option>
-              
-            </select>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <label for="note5">Note 5</label>
-            <input type="text" id="note5" name="note5">
-          </div>
-        <div class="row">
-          <div class="col">
-            <label for="requirement" class="required">Requirement</label>
-            <textarea id="requirement" name="requirement" required></textarea>
-          </div>
-          <div class="col">
-            <label for="thailandI4Index" class="required">Thailand i4 index</label>
-            <input type="text" id="thailandI4Index" name="thailandI4Index" required>
-          </div>
-        </div>
-        
-        <div class="row">
-          <div class="col">
-            <label for="constraints" class="required">Constraints</label>
-            <textarea id="constraints" name="constraints" required></textarea>
-          </div>
+          <label for="constraints" class="required">Constraints</label>
+          <textarea id="constraints" name="constraints" required></textarea>
         </div>
       </div>
-      
-      <!-- Result vs Objective -->
-      <div class="section">
-        <div class="section-title">Result vs Objective</div>
-        
-        <div class="row">
-          <div class="col">
-            <label for="objective" class="required">Objective</label>
-            <textarea id="objective" name="objective" required></textarea>
-          </div>
-          <div class="col">
-            <label for="description" class="required">Description</label>
-            <textarea id="description" name="description" required></textarea>
-          </div>
-        </div>
-        
-        <div class="row">
-          <div class="col">
-            <label for="improve" class="required">Improve</label>
-            <textarea id="improve" name="improve" required></textarea>
-          </div>
-          <div class="col">
-            <label for="result" class="required">Result</label>
-            <select id="result" name="result" required>
-              <option value="pass">Pass</option>
-              <option value="fail">Fail</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      
-      <!-- SI matching -->
-<div class="section">
-  <div class="section-title">SI matching</div>
-
-  <div class="row">
-    <div class="col">
-      <label for="siCompany1Business" class="required">บริษัท SI1 จำกัด ดำเนินธุรกิจ</label>
-      <textarea id="siCompany1Business" name="siCompany1Business" required></textarea>
     </div>
-    <div class="col">
-      <label for="siCompany2Business" class="required">บริษัท SI2 จำกัด ดำเนินธุรกิจ</label>
-      <textarea id="siCompany2Business" name="siCompany2Business" required></textarea>
-    </div>
-  </div>
-</div>
-
-<div class="section">
-  <div class="section-title">EXIM Bank</div>
-
-  <div class="row">
-    <div class="col">
-      <label for="criteria" class="required">หลักเกณฑ์</label>
-      <textarea id="criteria" name="criteria" required></textarea>
-    </div>
-    <div class="col">
-      <label for="otherCriteria" class="required">หลักเกณฑ์ อื่นๆ</label>
-      <textarea id="otherCriteria" name="otherCriteria" required></textarea>
-    </div>
-  </div>
-</div>
-
-<div class="section">
-  <div class="section-title">Summary of Recommendations</div>
-
-  <div class="row">
-    <div class="col">
-      <label for="costReduction" class="required">ต้นทุนลดลง (%)</label>
-      <input type="number" id="costReduction" name="costReduction" min="0" max="100" required>
-    </div>
-    <div class="col">
-      <label for="wasteReduction" class="required">ของเสียลดลง........%</label>
-      <input type="number" id="wasteReduction" name="wasteReduction" min="0" max="100" required>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
-      <label for="productivityIncrease" class="required">ผลิตภาพเพิ่มขึ้น.......%</label>
-      <input type="number" id="productivityIncrease" name="productivityIncrease" min="0" max="100" required>
-    </div>
-  </div>
-</div>
-
-<div class="section">
-  <div class="section-title">Project Team Members</div>
-
-  <div class="row">
-    <div class="col">
-      <label for="teamLeader" class="required">หัวหน้าทีม</label>
-      <input type="text" id="teamLeader" name="teamLeader" required>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
-      <label for="member1" class="required">สมาชิก 1</label>
-      <input type="text" id="member1" name="member1" required>
-    </div>
-    <div class="col">
-      <label for="member2" class="required">สมาชิก 2</label>
-      <input type="text" id="member2" name="member2" required>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
-      <label for="member3" class="required">สมาชิก 3</label>
-      <input type="text" id="member3" name="member3" required>
-    </div>
-    <div class="col">
-      <label for="member4" class="required">สมาชิก 4</label>
-      <input type="text" id="member4" name="member4" required>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
-      <label for="member5" class="required">สมาชิก 5</label>
-      <input type="text" id="member5" name="member5" required>
-    </div>
-    <div class="col">
-      <label for="member6" class="required">สมาชิก 6</label>
-      <input type="text" id="member6" name="member6" required>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
-      <label for="mentor" class="required">Mentor</label>
-      <input type="text" id="mentor" name="mentor" required>
-    </div>
-  </div>
-</div>
-
-      
-      <!-- Company Signatory Information -->
-      <div class="section">
-  <div class="section-title">ข้อมูลผู้ลงนาม</div>
-
-  <div class="row">
-    <div class="col">
-      <label for="signerName" class="required">ผู้มีอำนาจลงนามของสถานประกอบการ</label>
-      <input type="text" id="signerName" name="signerName" required>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
-      <label for="signerPosition" class="required">ตำแหน่ง</label>
-      <input type="text" id="signerPosition" name="signerPosition" required>
-    </div>
-    <div class="col">
-      <label for="companyName" class="required">บริษัท</label>
-      <input type="text" id="companyName" name="companyName" required>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
-      <label for="signDate" class="required">วันที่</label>
-      <input type="date" id="signDate" name="signDate" required>
-    </div>
-  </div>
-</div>
-
-        <div class="form-group">
-  <label for="fileUpload_1">รูปภาพที่ 1</label>
-  <input type="file" id="fileUpload_1" name="fileUpload_1" accept="image/*">
-
-  <label for="fileUpload_2">รูปภาพที่ 2</label>
-  <input type="file" id="fileUpload_2" name="fileUpload_2" accept="image/*">
-</div>
-
-      <!-- Submit Button -->
-      <button type="submit" class="submit-btn">ส่งแบบฟอร์ม</button>
-    </form>
     
-<script>
-document.getElementById("uploadForm").addEventListener("submit", async function(event) {
-  event.preventDefault();
-  
-  const formData = new FormData(this);
-  const fileUploads = document.querySelectorAll('input[type="file"]');
+    <!-- SI matching -->
+    <div class="section">
+      <div class="section-title">SI matching</div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="siCompany1Business" class="required">บริษัท SI1 จำกัด ดำเนินธุรกิจ</label>
+          <textarea id="siCompany1Business" name="siCompany1Business" required></textarea>
+        </div>
+        <div class="col">
+          <label for="siCompany2Business" class="required">บริษัท SI2 จำกัด ดำเนินธุรกิจ</label>
+          <textarea id="siCompany2Business" name="siCompany2Business" required></textarea>
+        </div>
+      </div>
+    </div>
+    
+    <!-- EXIM Bank -->
+    <div class="section">
+      <div class="section-title">EXIM Bank</div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="criteria" class="required">หลักเกณฑ์</label>
+          <textarea id="criteria" name="criteria" required></textarea>
+        </div>
+        <div class="col">
+          <label for="otherCriteria" class="required">หลักเกณฑ์ อื่นๆ</label>
+          <textarea id="otherCriteria" name="otherCriteria" required></textarea>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Summary of Recommendations -->
+    <div class="section">
+      <div class="section-title">Summary of Recommendations</div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="costReduction" class="required">ต้นทุนลดลง (%)</label>
+          <input type="number" id="costReduction" name="costReduction" min="0" max="100" required>
+        </div>
+        <div class="col">
+          <label for="wasteReduction" class="required">ของเสียลดลง (%)</label>
+          <input type="number" id="wasteReduction" name="wasteReduction" min="0" max="100" required>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="productivityIncrease" class="required">ผลิตภาพเพิ่มขึ้น (%)</label>
+          <input type="number" id="productivityIncrease" name="productivityIncrease" min="0" max="100" required>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Project Team Members -->
+    <div class="section">
+      <div class="section-title">Project Team Members</div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="teamLeader" class="required">หัวหน้าทีม</label>
+          <input type="text" id="teamLeader" name="teamLeader" required>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="member1" class="required">สมาชิก 1</label>
+          <input type="text" id="member1" name="member1" required>
+        </div>
+        <div class="col">
+          <label for="member2" class="required">สมาชิก 2</label>
+          <input type="text" id="member2" name="member2" required>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="member3" class="required">สมาชิก 3</label>
+          <input type="text" id="member3" name="member3" required>
+        </div>
+        <div class="col">
+          <label for="member4" class="required">สมาชิก 4</label>
+          <input type="text" id="member4" name="member4" required>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="member5" class="required">สมาชิก 5</label>
+          <input type="text" id="member5" name="member5" required>
+        </div>
+        <div class="col">
+          <label for="member6" class="required">สมาชิก 6</label>
+          <input type="text" id="member6" name="member6" required>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="mentor" class="required">Mentor</label>
+          <input type="text" id="mentor" name="mentor" required>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Company Signatory Information -->
+    <div class="section">
+      <div class="section-title">ข้อมูลผู้ลงนาม</div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="signerName" class="required">ผู้มีอำนาจลงนามของสถานประกอบการ</label>
+          <input type="text" id="signerName" name="signerName" required>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="signerPosition" class="required">ตำแหน่ง</label>
+          <input type="text" id="signerPosition" name="signerPosition" required>
+        </div>
+        <div class="col">
+          <label for="companyName" class="required">บริษัท</label>
+          <input type="text" id="companyName" name="companyName" required>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label for="signDate" class="required">วันที่</label>
+          <input type="date" id="signDate" name="signDate" required>
+        </div>
+      </div>
+    </div>
+    
 
-  for (let i = 0; i < fileUploads.length; i++) {
-    const file = fileUploads[i].files[0];
-    if (file) {
-      const base64 = await toBase64(file);
-      formData.set(`fileUpload_${i + 1}`, base64); // ใช้ formData.set() แทนการ append
+    <!-- Submit Button -->
+    <div class="row">
+      <div class="col" style="text-align: center;">
+        <button type="submit" class="submit-btn">ส่งแบบฟอร์ม</button>
+      </div>
+    </div>
+  </form>
+
+  <script>
+    document.getElementById("uploadForm").addEventListener("submit", async function(event) {
+      event.preventDefault();
+      
+      // Validate form
+      if (!validateForm()) {
+        alert("กรุณากรอกข้อมูลในช่องที่จำเป็นให้ครบถ้วน");
+        return;
+      }
+      
+      const formData = new FormData(this);
+      const fileInputs = [
+        document.getElementById('fileUpload_1'),
+        document.getElementById('fileUpload_2')
+      ];
+
+      try {
+        // Convert files to base64
+        for (let i = 0; i < fileInputs.length; i++) {
+          const file = fileInputs[i].files[0];
+          if (file) {
+            const base64Data = await getBase64(file);
+            formData.set(`file_${i+1}`, base64Data);
+            formData.set(`file_name_${i+1}`, file.name);
+          }
+        }
+
+        // Submit form
+        const response = await fetch('https://script.google.com/macros/s/AKfycbyBUs8MyWrHjf_IB5H4VXvQcFhHgPSf6frXTxF1F1zlN3ziagPaZfKKomKRJmvYqG_1/exec', {
+          method: 'POST',
+          body: formData
+        });
+
+        const result = await response.json();
+        alert(result.message || 'อัพโหลดสำเร็จ');
+        if (result.success) {
+          this.reset();
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('เกิดข้อผิดพลาดในการอัพโหลด');
+      }
+    });
+
+    // Function to convert file to base64
+    function getBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result.split(',')[1]); // Get only data part
+        reader.onerror = error => reject(error);
+      });
     }
-  }
 
-  const response = await fetch('https://script.google.com/macros/s/AKfycbyBUs8MyWrHjf_IB5H4VXvQcFhHgPSf6frXTxF1F1zlN3ziagPaZfKKomKRJmvYqG_1/exec', {
-    method: 'POST',
-    body: formData
-  });
-
-  const result = await response.json();
-  alert(result.message);
-});
-
-// ฟังก์ชันแปลงไฟล์เป็น Base64 (พร้อม MIME type)
-function toBase64(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result); // เก็บข้อมูลพร้อม MIME type
-    reader.onerror = error => reject(error);
-  });
-}
-</script>
+    // Form validation function
+    function validateForm() {
+      const requiredFields = document.querySelectorAll('[required]');
+      let isValid = true;
+      
+      requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+          field.style.borderColor = 'red';
+          isValid = false;
+        } else {
+          field.style.borderColor = '';
+        }
+      });
+      
+      return isValid;
+    }
+  </script>
 </body>
 </html>
